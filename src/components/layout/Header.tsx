@@ -1,12 +1,15 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useCartStore, useUIStore } from '@/stores';
 import { AnnouncementBar } from './AnnouncementBar';
+import { MegaMenu } from './MegaMenu';
+import { MegaMenuMobile } from './MegaMenuMobile';
 import headerContent from '@/content/header.json';
 import { routes, resolveRoute } from '@/lib/routes';
+import type { MegamenuItem } from '@/lib/shopify';
 
 interface NavItem {
   title: string;
@@ -15,10 +18,50 @@ interface NavItem {
   submenu?: { title: string; route: string }[];
 }
 
-export function Header() {
+interface HeaderProps {
+  megamenuItems: MegamenuItem[];
+}
+
+export function Header({ megamenuItems }: HeaderProps) {
   const { totalItems, openCart } = useCartStore();
   const { toggleMobileMenu, isMobileMenuOpen, closeMobileMenu } = useUIStore();
   const [expandedItems, setExpandedItems] = useState<string[]>([]);
+  const [isMegamenuVisible, setIsMegamenuVisible] = useState(false);
+  const [headerBottom, setHeaderBottom] = useState(0);
+  const megamenuTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const headerRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const updateHeaderBottom = () => {
+      if (headerRef.current) {
+        const rect = headerRef.current.getBoundingClientRect();
+        setHeaderBottom(rect.bottom);
+      }
+    };
+
+    updateHeaderBottom();
+    window.addEventListener('resize', updateHeaderBottom);
+    window.addEventListener('scroll', updateHeaderBottom);
+
+    return () => {
+      window.removeEventListener('resize', updateHeaderBottom);
+      window.removeEventListener('scroll', updateHeaderBottom);
+    };
+  }, []);
+
+  const showMegamenu = () => {
+    if (megamenuTimeoutRef.current) {
+      clearTimeout(megamenuTimeoutRef.current);
+      megamenuTimeoutRef.current = null;
+    }
+    setIsMegamenuVisible(true);
+  };
+
+  const hideMegamenu = () => {
+    megamenuTimeoutRef.current = setTimeout(() => {
+      setIsMegamenuVisible(false);
+    }, 100);
+  };
 
   const toggleSubmenu = (title: string) => {
     setExpandedItems((prev) =>
@@ -31,7 +74,7 @@ export function Header() {
   return (
     <>
       <AnnouncementBar />
-      <header className="sticky top-0 z-50 bg-white border-b border-[#e5e5e5]">
+      <header ref={headerRef} className="sticky top-0 z-50 bg-white border-b border-[#e5e5e5]">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-[60px] md:h-[70px]">
             {/* Left - Mobile menu button */}
@@ -69,24 +112,48 @@ export function Header() {
             <nav className="hidden lg:flex items-center gap-5">
               {navigation.map((item) => (
                 <div key={item.title} className="relative group">
-                  <Link
-                    href={resolveRoute(item.route)}
-                    className="py-2 text-[15px] font-medium text-[#1c1c1e] hover:text-gray-600 transition-colors"
-                  >
-                    {item.title}
-                  </Link>
-                  {item.submenu && (
-                    <div className="absolute top-full left-0 hidden group-hover:block bg-white shadow-lg border border-gray-100 py-2 min-w-[180px] z-50">
-                      {item.submenu.map((subItem) => (
-                        <Link
-                          key={subItem.title}
-                          href={resolveRoute(subItem.route)}
-                          className="block px-4 py-2.5 text-[14px] text-[#1c1c1e] hover:bg-gray-50"
-                        >
-                          {subItem.title}
-                        </Link>
-                      ))}
+                  {item.hasMegamenu ? (
+                    <div
+                      onMouseEnter={showMegamenu}
+                      onMouseLeave={hideMegamenu}
+                    >
+                      <button
+                        onClick={showMegamenu}
+                        className="py-2 text-[15px] font-medium text-[#1c1c1e] hover:text-gray-600 transition-colors cursor-pointer"
+                      >
+                        {item.title}
+                      </button>
+                      <MegaMenu
+                        items={megamenuItems}
+                        isVisible={isMegamenuVisible}
+                        topOffset={headerBottom}
+                        onMouseEnter={showMegamenu}
+                        onMouseLeave={hideMegamenu}
+                        onClose={() => setIsMegamenuVisible(false)}
+                      />
                     </div>
+                  ) : (
+                    <>
+                      <Link
+                        href={resolveRoute(item.route)}
+                        className="py-2 text-[15px] font-medium text-[#1c1c1e] hover:text-gray-600 transition-colors"
+                      >
+                        {item.title}
+                      </Link>
+                      {item.submenu && (
+                        <div className="absolute top-full left-0 hidden group-hover:block bg-white shadow-lg border border-gray-100 py-2 min-w-[180px] z-50">
+                          {item.submenu.map((subItem) => (
+                            <Link
+                              key={subItem.title}
+                              href={resolveRoute(subItem.route)}
+                              className="block px-4 py-2.5 text-[14px] text-[#1c1c1e] hover:bg-gray-50"
+                            >
+                              {subItem.title}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </>
                   )}
                 </div>
               ))}
@@ -136,7 +203,7 @@ export function Header() {
         {isMobileMenuOpen && (
           <>
             <div className="fixed inset-0 bg-black/50 z-40 lg:hidden" onClick={closeMobileMenu} />
-            <nav className="fixed top-0 left-0 h-full w-[300px] bg-white z-50 overflow-y-auto lg:hidden">
+            <nav className="fixed top-0 left-0 h-full w-[340px] bg-white z-50 overflow-y-auto lg:hidden">
               <div className="flex items-center justify-between p-4 border-b">
                 <Image
                   src={headerContent.logo.src}
@@ -151,7 +218,24 @@ export function Header() {
               <div className="p-4">
                 {navigation.map((item) => (
                   <div key={item.title} className="border-b border-gray-100">
-                    {item.submenu ? (
+                    {item.hasMegamenu ? (
+                      <>
+                        <button
+                          className="flex items-center justify-between w-full py-3.5 text-[15px] font-medium text-[#1c1c1e]"
+                          onClick={() => toggleSubmenu(item.title)}
+                        >
+                          <span>{item.title}</span>
+                          <ChevronIcon isOpen={expandedItems.includes(item.title)} />
+                        </button>
+                        <div
+                          className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                            expandedItems.includes(item.title) ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'
+                          }`}
+                        >
+                          <MegaMenuMobile items={megamenuItems} onLinkClick={closeMobileMenu} />
+                        </div>
+                      </>
+                    ) : item.submenu ? (
                       <>
                         <button
                           className="flex items-center justify-between w-full py-3.5 text-[15px] font-medium text-[#1c1c1e]"
@@ -190,6 +274,15 @@ export function Header() {
                     )}
                   </div>
                 ))}
+
+                {/* 3D Design Tool - hidden on phones, visible on tablets */}
+                <Link
+                  href={resolveRoute(headerContent.designToolLink.route)}
+                  className="hidden sm:block py-3.5 text-[15px] font-medium text-[#E8927C] border-b border-gray-100"
+                  onClick={closeMobileMenu}
+                >
+                  {headerContent.designToolLink.title}
+                </Link>
 
                 {/* Free Design Service Button */}
                 <Link

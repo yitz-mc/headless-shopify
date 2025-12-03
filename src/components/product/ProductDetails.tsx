@@ -47,93 +47,58 @@ export function ProductDetails({ product, initialVariantId }: ProductDetailsProp
     }));
   };
 
-  // Filter images based on selected variant options
+  // Filter images based on selected variant's image altText
   const displayImages = useMemo(() => {
-    // Get selected option values (e.g., "White", "Natural Oak")
-    const optionValues = Object.values(selectedOptions).filter(Boolean);
-
-    if (optionValues.length === 0) {
+    // If no variant selected or variant has no image, show all
+    if (!selectedVariant?.image) {
       return images;
     }
 
-    // Check if any image altText exactly matches a selected option value
-    // This handles products like "Mudroom Drawer Kit" where altText = "White", "Grey", etc.
-    const exactMatchImages = images.filter((img) => {
+    const variantAltText = selectedVariant.image.altText;
+
+    // If variant image has no altText, just put it first
+    if (!variantAltText) {
+      const variantImageId = selectedVariant.image.id;
+      const variantImg = images.find((img) => img.id === variantImageId);
+      if (variantImg) {
+        const otherImages = images.filter((img) => img.id !== variantImageId);
+        return [variantImg, ...otherImages];
+      }
+      return images;
+    }
+
+    // Find all images with matching altText (exact match, skip ab_test and swatch images)
+    const matchingImages = images.filter((img) => {
       if (!img.altText) return false;
-      return optionValues.some(
-        (optVal) => img.altText?.toLowerCase() === optVal.toLowerCase()
-      );
+      // Skip images with "ab_test" in altText
+      if (img.altText.toLowerCase().includes('ab_test')) return false;
+      // Skip swatch images
+      if (img.altText.toLowerCase().includes('swatch')) return false;
+
+      return img.altText.toLowerCase() === variantAltText.toLowerCase();
     });
 
-    // If we found exact matches, use those
-    if (exactMatchImages.length > 0) {
-      // Put the variant's specific image first
-      if (selectedVariant?.image) {
-        const variantImageId = selectedVariant.image.id;
-        const variantImg = exactMatchImages.find((img) => img.id === variantImageId);
-        if (variantImg) {
-          const withoutVariant = exactMatchImages.filter((img) => img.id !== variantImageId);
-          return [variantImg, ...withoutVariant];
-        }
+    // If we found matches, use them (with variant image first)
+    if (matchingImages.length > 0) {
+      const variantImageId = selectedVariant.image.id;
+      const variantImg = matchingImages.find((img) => img.id === variantImageId);
+      if (variantImg) {
+        const withoutVariant = matchingImages.filter((img) => img.id !== variantImageId);
+        return [variantImg, ...withoutVariant];
       }
-      return exactMatchImages;
+      return matchingImages;
     }
 
-    // Check if product has var_images tag (enables complex filtering)
-    const hasVarImagesTag = product.tags?.some(
-      (tag) => tag.toLowerCase() === 'var_images'
-    );
-
-    if (hasVarImagesTag) {
-      // Normalize option values for complex matching
-      const normalizedOptions = optionValues.map((opt) =>
-        opt.toUpperCase().replace(/[^a-zA-Z0-9]/g, ' ')
-      );
-      const normalizedTitle = product.title.toUpperCase();
-
-      const filteredImages = images.filter((img) => {
-        const altText = img.altText?.toUpperCase() || '';
-        if (!altText) return false;
-        if (altText.includes('SWATCH')) return false;
-
-        // Check if matches product title exactly
-        if (altText === normalizedTitle) return true;
-
-        // Split alt text into words
-        const altWords = altText
-          .split(' ')
-          .filter((word) => word !== 'ab_test')
-          .map((word) => word.replace(/[^a-zA-Z0-9.]/g, '').trim())
-          .filter(Boolean);
-
-        // Check if EVERY word in alt text matches some option
-        return altWords.every((word) =>
-          normalizedOptions.some((opt) => opt.includes(word) || word.includes(opt.split(' ')[0]))
-        );
-      });
-
-      if (filteredImages.length > 0) {
-        if (selectedVariant?.image) {
-          const variantImageId = selectedVariant.image.id;
-          const variantImg = filteredImages.find((img) => img.id === variantImageId);
-          if (variantImg) {
-            const withoutVariant = filteredImages.filter((img) => img.id !== variantImageId);
-            return [variantImg, ...withoutVariant];
-          }
-        }
-        return filteredImages;
-      }
-    }
-
-    // Fallback: put variant image first if exists
-    if (selectedVariant?.image) {
-      const variantImage = selectedVariant.image;
-      const otherImages = images.filter((img) => img.id !== variantImage.id);
-      return [variantImage, ...otherImages];
+    // Fallback: put variant image first
+    const variantImageId = selectedVariant.image.id;
+    const variantImg = images.find((img) => img.id === variantImageId);
+    if (variantImg) {
+      const otherImages = images.filter((img) => img.id !== variantImageId);
+      return [variantImg, ...otherImages];
     }
 
     return images;
-  }, [selectedVariant, images, selectedOptions, product.tags, product.title]);
+  }, [selectedVariant, images]);
 
   const hasMultipleOptions = product.options.length > 0 && product.options[0].values.length > 1;
 

@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/lib/providers";
 import { Header, Footer } from "@/components/layout";
+import { getMegamenuItems } from "@/lib/shopify";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,18 +20,20 @@ export const metadata: Metadata = {
   description: "Design your perfect custom closet with modular components at wholesale prices. Free expert design service included.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const megamenuItems = await getMegamenuItems();
+
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
       >
         <Providers>
-          <Header />
+          <Header megamenuItems={megamenuItems} />
           <main className="flex-1">{children}</main>
           <Footer />
         </Providers>

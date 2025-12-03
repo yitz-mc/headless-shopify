@@ -1,6 +1,9 @@
-import { Hero } from '@/components/sections';
+import { Hero, TrustpilotReviews } from '@/components/sections';
+import { getTrustpilotReviews } from '@/lib/shopify/trustpilot';
 
-export default function Home() {
+export default async function Home() {
+  const { heading, reviews } = await getTrustpilotReviews();
+
   return (
     <>
       <Hero />
@@ -20,15 +23,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials - Placeholder */}
-      <section className="py-12 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-2xl font-bold mb-8 text-center">What Our Customers Say</h2>
-          <p className="text-center text-gray-600">
-            Trustpilot reviews will be integrated here
-          </p>
-        </div>
-      </section>
+      <TrustpilotReviews
+        heading={heading.heading}
+        ratingName={heading.ratingName}
+        amountOfStars={heading.amountOfStars}
+        amountOfReviews={heading.amountOfReviews}
+        buttonLink={heading.buttonLink}
+        buttonText={heading.buttonText}
+        reviews={reviews}
+      />
     </>
   );
 }
