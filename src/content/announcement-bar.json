@@ -1,0 +1,19 @@
+{
+  "phone": {
+    "text": "TALK TO A DESIGNER 9-5 EST",
+    "number": "(855) 202-2964"
+  },
+  "promo": {
+    "message": "OUR CYBER MONDAY SALE IS LIVE!",
+    "linkText": "GET FREE DESIGN SERVICE NOW",
+    "linkRoute": "designQuiz"
+  },
+  "countdown": {
+    "enabled": false,
+    "endDate": null
+  },
+  "style": {
+    "backgroundColor": "#1c1c1e",
+    "textColor": "#ffffff"
+  }
+}

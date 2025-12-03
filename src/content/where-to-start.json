@@ -1,0 +1,42 @@
+{
+  "heading": "Where to Start",
+  "description": "Not sure where to begin? We've got you covered with two easy options.",
+  "showHeading": false,
+  "backgroundColor": "#ffffff",
+  "cards": [
+    {
+      "id": "free-design",
+      "backgroundColor": "#2b87c9",
+      "textColor": "#ffffff",
+      "image": "https://sfycdn.speedsize.com/eed8e0c4-8a58-46ce-832b-26984a0a57e6/https://www.modularclosets.com/cdn/shop/files/design_people.png?v=1719346372",
+      "title": "Get FREE Closet Design",
+      "description": "Our awesome designers are here to help! Just fill out the form and we'll create magic.",
+      "buttonText": "Design my closet for me!",
+      "buttonUrl": "/pages/closet-design-quiz",
+      "buttonColor": "#bfe0f7",
+      "buttonHoverColor": "#ffffff",
+      "buttonTextColor": "#000000",
+      "buttonTextHoverColor": "#000000",
+      "hideMobile": false,
+      "width": 175,
+      "height": 75
+    },
+    {
+      "id": "design-tool",
+      "backgroundColor": "#daeefc",
+      "textColor": "#000000",
+      "image": "https://sfycdn.speedsize.com/eed8e0c4-8a58-46ce-832b-26984a0a57e6/https://www.modularclosets.com/cdn/shop/files/3d_design.svg?v=1719347316",
+      "title": "3D Design Tool",
+      "description": "Our closet design tool is made for DIY-ers. (Reviewers say it's the easiest ever — try it!)",
+      "buttonText": "Design your 3D closet",
+      "buttonUrl": "/pages/closet-design-tool",
+      "buttonColor": "#2b87c9",
+      "buttonHoverColor": "#ffffff",
+      "buttonTextColor": "#ffffff",
+      "buttonTextHoverColor": "#000000",
+      "hideMobile": true,
+      "width": 75,
+      "height": 75
+    }
+  ]
+}

@@ -1,1 +1,6 @@
-{}
+{
+  "eslint.workingDirectories": ["./"],
+    "files.exclude": {
+    "/C:/Users/MrNeuman/Workspace/modular-closets-github": true
+  }
+}

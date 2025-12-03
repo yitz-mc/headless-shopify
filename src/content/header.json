@@ -1,0 +1,34 @@
+{
+  "navigation": [
+    {
+      "title": "Closets",
+      "route": "chooseCategory",
+      "hasMegamenu": true
+    },
+    {
+      "title": "Other Spaces",
+      "route": "collections.otherSpaces",
+      "submenu": [
+        { "title": "Wardrobes", "route": "collections.wardrobes" },
+        { "title": "Mudrooms", "route": "pages.mudrooms" },
+        { "title": "Garages", "route": "pages.garages" }
+      ]
+    },
+    { "title": "Kits", "route": "collections.preDesignedClosets" },
+    { "title": "For Pros", "route": "pages.contractors" },
+    { "title": "Gallery", "route": "pages.gallery" }
+  ],
+  "designToolLink": {
+    "title": "3D Design Tool",
+    "route": "designTool"
+  },
+  "designServiceButton": {
+    "title": "Free Design Service",
+    "route": "designQuiz"
+  },
+  "mobilePhone": "(855) 920-2964",
+  "logo": {
+    "src": "https://modular-images-public.s3.us-east-2.amazonaws.com/logo-wide.svg",
+    "alt": "Modular Closets"
+  }
+}

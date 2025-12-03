@@ -1,0 +1,25 @@
+{
+  "backgroundColor": "#2b2b2b",
+  "textColor": "#ffffff",
+  "image": "https://www.modularclosets.com/cdn/shop/files/winter_closet_01_2.jpg",
+  "headingInfo": "",
+  "heading": "CYBER MONDAY",
+  "outlineHeading": true,
+  "subheading": "The custom closet of your dreams is now",
+  "saleText": "20% OFF",
+  "code": {
+    "text": "Code: CM20",
+    "value": "CM20"
+  },
+  "buttons": {
+    "primary": {
+      "text": "Free Design Service",
+      "route": "designQuiz"
+    },
+    "secondary": {
+      "text": "3D Design Tool",
+      "route": "designTool"
+    }
+  },
+  "mobileButtons": null
+}

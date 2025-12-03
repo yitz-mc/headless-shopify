@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir:*)",
+      "Bash(npm run dev:*)",
+      "Read(C:/Users/MrNeuman/Workspace/modular-closets-github/**)",
+      "Grep(C:/Users/MrNeuman/Workspace/modular-closets-github/**)",
+      "Bash(npm install:*)",
+      "Bash(npm run build:*)",
+      "Bash(npx eslint .)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

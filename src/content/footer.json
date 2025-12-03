@@ -1,0 +1,58 @@
+{
+  "description": "Our closets will help you get organized by maximizing your closet space while turning your closet into a beautiful part of your home.",
+  "tagline": "Making homeowners happy since 2015.",
+  "contact": {
+    "heading": "Contact Us",
+    "email": "support@modularclosets.com",
+    "phone": "(855) 997-1391"
+  },
+  "social": [
+    { "platform": "facebook", "url": "https://www.facebook.com/modularclosets/" },
+    { "platform": "instagram", "url": "https://www.instagram.com/modularclosets/" },
+    { "platform": "twitter", "url": "https://x.com/modularclosets" },
+    { "platform": "pinterest", "url": "https://www.pinterest.com/mymodularclosets" },
+    { "platform": "youtube", "url": "https://www.youtube.com/channel/UCnF2QzX38sVMHLQYzdP5JNQ" },
+    { "platform": "tiktok", "url": "https://www.tiktok.com/@modularclosets" }
+  ],
+  "shopClosets": {
+    "heading": "Shop Closets",
+    "links": [
+      { "title": "Free Design Service", "route": "designQuiz" },
+      { "title": "3D Design Tool", "route": "designTool" },
+      { "title": "Vista Closets", "route": "collections.vista" },
+      { "title": "Alto Closets", "route": "collections.alto" },
+      { "title": "Milano Wardrobe", "route": "collections.milanoInternal" },
+      { "title": "Garages", "route": "pages.garages" },
+      { "title": "Mudrooms", "route": "pages.mudrooms" },
+      { "title": "Closet Kits", "route": "collections.preDesignedClosets" },
+      { "title": "Accessories", "route": "collections.accessories" },
+      { "title": "Vista Parts", "route": "collections.vistaParts" },
+      { "title": "Alto Parts", "route": "collections.altoParts" }
+    ]
+  },
+  "resources": {
+    "heading": "Resources",
+    "links": [
+      { "title": "Assembly Instructions", "route": "pages.assemblyInstructions" },
+      { "title": "Inspiration Gallery", "route": "pages.gallery" },
+      { "title": "FAQs", "route": "pages.faqs" },
+      { "title": "For Pros", "route": "pages.contractors" },
+      { "title": "Multifamily", "url": "https://multifamily.modularclosets.com" },
+      { "title": "Shipping & Returns", "route": "pages.shippingReturns" },
+      { "title": "Lifetime Warranty", "route": "pages.warranty" },
+      { "title": "Buy Now, Ship Later Policy", "route": "pages.buyNowShipLater" },
+      { "title": "Safety and Assembly Guidelines", "route": "pages.safetyGuidelines" },
+      { "title": "Contact Us", "route": "pages.contactUs" }
+    ]
+  },
+  "newsletter": {
+    "heading": "We make high-quality emails, too.",
+    "description": "Sign up for emails for first dibs on insider secrets, sales, fresh inspiration, and more.",
+    "placeholder": "Enter your email",
+    "buttonText": "Sign up"
+  },
+  "legal": [
+    { "title": "Privacy Policy", "route": "pages.privacyPolicy" },
+    { "title": "Terms & Conditions", "route": "policies.termsOfService" }
+  ]
+}
