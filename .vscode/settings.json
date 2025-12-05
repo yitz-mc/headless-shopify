@@ -1,6 +1,17 @@
 {
   "eslint.workingDirectories": ["./"],
-    "files.exclude": {
+  "files.exclude": {
     "/C:/Users/MrNeuman/Workspace/modular-closets-github": true
-  }
+  },
+  "cSpell.words": [
+    "Afterpay",
+    "codegen",
+    "druk",
+    "Hotspot",
+    "Hotspots",
+    "Metaobject",
+    "photoswipe",
+    "TRUSTPILOT",
+    "Upsell"
+  ]
 }

@@ -37,13 +37,19 @@ interface MegamenuResponse {
   };
 }
 
-function getFieldValue(fields: MegamenuResponse['metaobjects']['nodes'][0]['fields'], key: string): string {
-  const field = fields.find(f => f.key === key);
+function getFieldValue(
+  fields: MegamenuResponse['metaobjects']['nodes'][0]['fields'],
+  key: string,
+): string {
+  const field = fields.find((f) => f.key === key);
   return field?.value || '';
 }
 
-function getFieldImage(fields: MegamenuResponse['metaobjects']['nodes'][0]['fields'], key: string): string | null {
-  const field = fields.find(f => f.key === key);
+function getFieldImage(
+  fields: MegamenuResponse['metaobjects']['nodes'][0]['fields'],
+  key: string,
+): string | null {
+  const field = fields.find((f) => f.key === key);
   return field?.reference?.image?.url || null;
 }
 
@@ -60,16 +66,14 @@ function parseListItems(value: string): string[] {
 function makeRelativeUrl(url: string): string {
   if (!url) return '/';
   // Strip modularclosets.com domain to make URLs relative
-  return url
-    .replace(/^https?:\/\/(www\.)?modularclosets\.com/i, '')
-    || '/';
+  return url.replace(/^https?:\/\/(www\.)?modularclosets\.com/i, '') || '/';
 }
 
 export async function getMegamenuItems(): Promise<MegamenuItem[]> {
   try {
     const data = await shopifyClient.request<MegamenuResponse>(GET_MEGAMENU);
 
-    return data.metaobjects.nodes.map(node => ({
+    return data.metaobjects.nodes.map((node) => ({
       id: node.id,
       handle: node.handle,
       menuType: getFieldValue(node.fields, 'menu_type'),

@@ -1,14 +1,6 @@
 import { shopifyClient } from './client';
 import { GET_TRUSTPILOT_REVIEWS } from '@/graphql/queries/trustpilot';
-
-interface MetaobjectField {
-  key: string;
-  value: string;
-}
-
-interface MetaobjectNode {
-  fields: MetaobjectField[];
-}
+import type { MetaobjectField, MetaobjectNode, TrustpilotHeading, TrustpilotReview } from '@/types';
 
 interface TrustpilotResponse {
   heading: {
@@ -19,30 +11,17 @@ interface TrustpilotResponse {
   };
 }
 
-export interface TrustpilotHeading {
-  ratingName: string;
-  amountOfStars: string;
-  amountOfReviews: string;
-  heading: string;
-  buttonLink: string;
-  buttonText: string;
-}
-
-export interface TrustpilotReview {
-  displayName: string;
-  experiencedAt: string;
-  stars: number;
-  title: string;
-  text: string;
-}
+export type { TrustpilotHeading, TrustpilotReview };
 
 function parseFields(fields: MetaobjectField[]): Record<string, string> {
   return fields.reduce(
     (acc, field) => {
-      acc[field.key] = field.value;
+      if (field.value !== null) {
+        acc[field.key] = field.value;
+      }
       return acc;
     },
-    {} as Record<string, string>
+    {} as Record<string, string>,
   );
 }
 
@@ -82,7 +61,8 @@ export async function getTrustpilotReviews(): Promise<{
       amountOfStars: headingFields.amount_of_stars || '4.7',
       amountOfReviews: headingFields.amount_of_reviews || '3,744',
       heading: headingFields.heading || 'Over 100,000 closets sold to happy customers.',
-      buttonLink: headingFields.button_link || 'https://www.trustpilot.com/review/modularclosets.com',
+      buttonLink:
+        headingFields.button_link || 'https://www.trustpilot.com/review/modularclosets.com',
       buttonText: headingFields.button_text || 'View All Reviews',
     };
 

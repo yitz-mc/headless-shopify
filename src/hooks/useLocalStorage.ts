@@ -10,7 +10,7 @@ import { useState, useCallback } from 'react';
  */
 export function useLocalStorage<T>(
   key: string,
-  initialValue: T
+  initialValue: T,
 ): [T, (value: T | ((prev: T) => T)) => void, () => void] {
   // Get initial value from localStorage or use default
   const [storedValue, setStoredValue] = useState<T>(() => {
@@ -31,8 +31,7 @@ export function useLocalStorage<T>(
   const setValue = useCallback(
     (value: T | ((prev: T) => T)) => {
       try {
-        const valueToStore =
-          value instanceof Function ? value(storedValue) : value;
+        const valueToStore = value instanceof Function ? value(storedValue) : value;
         setStoredValue(valueToStore);
 
         if (typeof window !== 'undefined') {
@@ -42,7 +41,7 @@ export function useLocalStorage<T>(
         console.warn(`Error setting localStorage key "${key}":`, error);
       }
     },
-    [key, storedValue]
+    [key, storedValue],
   );
 
   // Remove from localStorage

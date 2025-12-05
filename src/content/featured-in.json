@@ -1,0 +1,25 @@
+{
+  "backgroundColor": "#f9f9f9",
+  "logos": [
+    {
+      "id": "better-homes",
+      "image": "https://sfycdn.speedsize.com/eed8e0c4-8a58-46ce-832b-26984a0a57e6/www.modularclosets.com/cdn/shop/files/better-homes-and-gardens-vector-logo.png",
+      "alt": "Better Homes and Gardens"
+    },
+    {
+      "id": "forbes",
+      "image": "https://sfycdn.speedsize.com/eed8e0c4-8a58-46ce-832b-26984a0a57e6/www.modularclosets.com/cdn/shop/files/Mask_Group_236.svg",
+      "alt": "Forbes"
+    },
+    {
+      "id": "bob-vila",
+      "image": "https://sfycdn.speedsize.com/eed8e0c4-8a58-46ce-832b-26984a0a57e6/www.modularclosets.com/cdn/shop/files/Image_283.png",
+      "alt": "Bob Vila"
+    },
+    {
+      "id": "good-housekeeping",
+      "image": "https://sfycdn.speedsize.com/eed8e0c4-8a58-46ce-832b-26984a0a57e6/www.modularclosets.com/cdn/shop/files/goodhousekeepingsvg.svg",
+      "alt": "Good Housekeeping"
+    }
+  ]
+}

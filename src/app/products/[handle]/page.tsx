@@ -24,10 +24,9 @@ async function getProduct(handle: string): Promise<ProductResult> {
   const client = getShopifyClient();
 
   try {
-    const data = await client.request<{ product: Product | null }>(
-      GET_PRODUCT_BY_HANDLE,
-      { handle }
-    );
+    const data = await client.request<{ product: Product | null }>(GET_PRODUCT_BY_HANDLE, {
+      handle,
+    });
 
     return { product: data.product, error: null };
   } catch (error) {
@@ -66,9 +65,9 @@ export default async function ProductPage({ params, searchParams }: ProductPageP
 
   if (error || !product) {
     return (
-      <div className="container mx-auto px-4 py-16 text-center">
-        <h1 className="text-2xl font-bold mb-4">Product</h1>
-        <p className="text-gray-500">Unable to load product. Please try again later.</p>
+      <div className='container mx-auto px-4 py-16 text-center'>
+        <h1 className='text-2xl font-bold mb-4'>Product</h1>
+        <p className='text-gray-500'>Unable to load product. Please try again later.</p>
       </div>
     );
   }
@@ -78,8 +77,8 @@ export default async function ProductPage({ params, searchParams }: ProductPageP
     .filter((sku): sku is string => Boolean(sku));
 
   return (
-    <div className="product-page py-8">
-      <div className="container mx-auto px-4">
+    <div className='product-page py-8'>
+      <div className='container mx-auto px-4'>
         <ProductDetails product={product} initialVariantId={variantId} />
       </div>
 
@@ -91,7 +90,7 @@ export default async function ProductPage({ params, searchParams }: ProductPageP
         variantSkus={variantSkus}
       />
 
-      <WhereToStart />
+      <WhereToStart variant='product' />
     </div>
   );
 }

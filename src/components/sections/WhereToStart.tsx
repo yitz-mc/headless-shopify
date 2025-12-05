@@ -3,7 +3,8 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import content from '@/content/where-to-start.json';
+import contentData from '@/content/where-to-start.json';
+import { resolveRoute } from '@/lib/routes';
 
 interface CardConfig {
   id: string;
@@ -13,7 +14,7 @@ interface CardConfig {
   title: string;
   description: string;
   buttonText: string;
-  buttonUrl: string;
+  buttonRoute: string;
   buttonColor: string;
   buttonHoverColor: string;
   buttonTextColor: string;
@@ -23,34 +24,35 @@ interface CardConfig {
   height?: number;
 }
 
+interface WhereToStartProps {
+  variant: 'product' | 'chooseCategory';
+  showHeading?: boolean;
+  backgroundColor?: string;
+}
+
 function WhereToStartCard({ card }: { card: CardConfig }) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
     <Link
-      href={card.buttonUrl}
-      className="where-card flex flex-col items-center p-6 md:p-10 rounded-2xl w-full transition-shadow hover:shadow-xl"
+      href={resolveRoute(card.buttonRoute)}
+      className='where-card flex flex-col items-center p-6 md:p-10 rounded-2xl w-full transition-shadow hover:shadow-xl'
       style={{ backgroundColor: card.backgroundColor }}
     >
       {/* Icon */}
       <div
-        className="relative"
+        className='relative'
         style={{
           width: card.width ? `${card.width}px` : '160px',
-          height: card.height ? `${card.height}px` : (card.width ? `${card.width}px` : '160px'),
+          height: card.height ? `${card.height}px` : card.width ? `${card.width}px` : '160px',
         }}
       >
-        <Image
-          src={card.image}
-          alt=""
-          fill
-          className="object-contain"
-        />
+        <Image src={card.image} alt='' fill className='object-contain' />
       </div>
 
       {/* Title */}
       <h3
-        className="text-2xl md:text-4xl font-medium text-center mt-4 leading-none"
+        className='text-2xl md:text-2xl lg:text-4xl font-medium text-center mt-4 leading-none'
         style={{ color: card.textColor }}
       >
         {card.title}
@@ -58,7 +60,7 @@ function WhereToStartCard({ card }: { card: CardConfig }) {
 
       {/* Description */}
       <p
-        className="text-sm md:text-lg text-center w-full md:w-[85%] mt-2"
+        className='text-sm md:text-lg text-center w-full md:w-[85%] mt-2'
         style={{ color: card.textColor }}
       >
         {card.description}
@@ -66,7 +68,7 @@ function WhereToStartCard({ card }: { card: CardConfig }) {
 
       {/* Button */}
       <button
-        className="mc-btn flex items-center px-6 py-3 rounded-full font-medium transition-colors mt-4"
+        className='mc-btn flex items-center px-6 py-3 rounded-full font-medium transition-colors mt-4'
         style={{
           backgroundColor: isHovered ? card.buttonHoverColor : card.buttonColor,
           color: isHovered ? card.buttonTextHoverColor : card.buttonTextColor,
@@ -82,29 +84,32 @@ function WhereToStartCard({ card }: { card: CardConfig }) {
   );
 }
 
-export function WhereToStart() {
+export function WhereToStart({ variant, showHeading, backgroundColor }: WhereToStartProps) {
+  const content = contentData[variant];
+  const shouldShowHeading = showHeading ?? content.showHeading;
+  const bgColor = backgroundColor ?? content.backgroundColor;
+
   return (
-    <div
-      className="where-section-wrapper py-12 md:py-16"
-      style={{ backgroundColor: content.backgroundColor }}
-    >
-      <div className="container mx-auto px-4">
+    <div className='where-section-wrapper py-12 md:py-16' style={{ backgroundColor: bgColor }}>
+      <div className='container mx-auto px-4'>
         {/* Heading */}
-        {content.showHeading && (
-          <div className="where-top-text-wrapper flex flex-col items-center pb-8 md:pb-12">
-            <h2 className="text-5xl md:text-7xl lg:text-[86px] font-medium tracking-wide my-6 md:my-10 text-center leading-[0.88]">
+        {shouldShowHeading && (
+          <div className='where-top-text-wrapper flex flex-col items-center pb-8 md:pb-12'>
+            <h2
+              className='text-5xl md:text-7xl lg:text-[86px] font-medium tracking-wide my-6 md:my-10 text-center leading-[0.88]'
+              style={{ color: 'headingColor' in content ? content.headingColor : undefined }}
+            >
               {content.heading}
             </h2>
-            <p className="text-base md:text-lg text-center w-[90%] md:w-[65%] lg:w-[48%] m-0">
+            <p className='text-base md:text-lg text-center w-[90%] md:w-[65%] lg:w-[48%] m-0'>
               {content.description}
             </p>
           </div>
         )}
 
-        {/* Cards - Horizontal scroll on mobile */}
-        <div className="where-card-wrapper flex overflow-x-auto md:overflow-visible gap-4 md:gap-12 lg:gap-16 md:justify-center pb-4 md:pb-0 snap-x snap-mandatory scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0">
+        <div className='where-card-wrapper flex flex-col md:flex-row gap-4 md:gap-12 lg:gap-16 md:justify-center'>
           {content.cards.map((card) => (
-            <div key={card.id} className="flex-shrink-0 w-[85%] md:w-auto md:flex-shrink snap-center">
+            <div key={card.id} className={card.hideMobile ? 'hidden md:block' : ''}>
               <WhereToStartCard card={card} />
             </div>
           ))}

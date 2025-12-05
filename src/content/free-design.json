@@ -1,0 +1,13 @@
+{
+  "heading": "Get your closet designed by an expert—it's FREE!",
+  "description": "Are you thinking, \"Where do I start!?\" Our expert closet designers are here to help!",
+  "buttonText": "Free Design Service",
+  "buttonUrl": "/pages/closet-design-quiz?utm_referlclick=hp_designmyclosetforme_cta",
+  "mobileButtonRoute": "pages.closetDesignB",
+  "image": "https://sfycdn.speedsize.com/eed8e0c4-8a58-46ce-832b-26984a0a57e6/www.modularclosets.com/cdn/shop/files/Mask_Group_571_b920b488-d12d-492b-89f6-b888fae48992.png?v=1720446595",
+  "cards": [
+    "Get dedicated, 1-on-1 help",
+    "Includes unlimited designs",
+    "Best of all, it's totally FREE"
+  ]
+}

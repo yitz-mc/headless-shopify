@@ -90,7 +90,10 @@ function normalizeId(gid: string): string {
   return gid.split('/').pop() || '';
 }
 
-export function ProductInUseGallery({ productId, title = 'See this product in use' }: ProductInUseGalleryProps) {
+export function ProductInUseGallery({
+  productId,
+  title = 'See this product in use',
+}: ProductInUseGalleryProps) {
   const [images, setImages] = useState<GalleryImage[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -107,10 +110,9 @@ export function ProductInUseGallery({ productId, title = 'See this product in us
 
       try {
         while (hasNextPage && allImages.length < 5) {
-          const response: GalleryResponse = await shopifyClient.request(
-            GET_GALLERY_METAOBJECTS,
-            { cursor }
-          );
+          const response: GalleryResponse = await shopifyClient.request(GET_GALLERY_METAOBJECTS, {
+            cursor,
+          });
 
           const edges = response.metaobjects.edges;
 
@@ -124,7 +126,7 @@ export function ProductInUseGallery({ productId, title = 'See this product in us
             if (!imageUrl) continue;
 
             const matchesProduct = products.some(
-              (p) => normalizeId(p.node.id) === normalizedProductId
+              (p) => normalizeId(p.node.id) === normalizedProductId,
             );
 
             if (matchesProduct) {
@@ -234,20 +236,20 @@ export function ProductInUseGallery({ productId, title = 'See this product in us
   }
 
   return (
-    <div className="product-in-use-gallery py-8 md:py-12 bg-gray-50">
-      <div className="container mx-auto px-4">
-        <h2 className="text-2xl md:text-3xl font-bold text-center mb-8">{title}</h2>
+    <div className='product-in-use-gallery py-8 md:py-12 bg-gray-50'>
+      <div className='container mx-auto px-4'>
+        <h2 className='text-2xl md:text-3xl font-bold text-center mb-8'>{title}</h2>
 
-        <div id="product-in-use-gallery" ref={containerRef}>
+        <div id='product-in-use-gallery' ref={containerRef}>
           {/* Hidden links for PhotoSwipe - single source of truth */}
-          <div className="hidden">
+          <div className='hidden'>
             {images.map((image) => (
               <a
                 key={image.id}
                 href={image.imageUrl}
                 data-pswp-width={1200}
                 data-pswp-height={1200}
-                className="gallery-item"
+                className='gallery-item'
               >
                 Product in use
               </a>
@@ -255,28 +257,28 @@ export function ProductInUseGallery({ productId, title = 'See this product in us
           </div>
 
           {/* Desktop: Grid layout */}
-          <div className="hidden md:grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+          <div className='hidden md:grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4'>
             {images.map((image, index) => (
               <button
                 key={image.id}
-                className="block aspect-square relative overflow-hidden rounded-lg cursor-zoom-in group"
+                className='block aspect-square relative overflow-hidden rounded-lg cursor-zoom-in group'
                 onClick={() => openLightbox(index)}
               >
                 <Image
                   src={`${image.imageUrl}&width=600`}
-                  alt="Product in use"
+                  alt='Product in use'
                   fill
-                  sizes="(max-width: 1024px) 50vw, 20vw"
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  sizes='(max-width: 1024px) 50vw, 20vw'
+                  className='object-cover transition-transform duration-300 group-hover:scale-105'
                 />
               </button>
             ))}
           </div>
 
           {/* Mobile: Carousel */}
-          <div className="md:hidden">
+          <div className='md:hidden'>
             <div
-              className="relative aspect-square overflow-hidden rounded-lg cursor-zoom-in"
+              className='relative aspect-square overflow-hidden rounded-lg cursor-zoom-in'
               onTouchStart={handleTouchStart}
               onTouchEnd={handleTouchEnd}
               onMouseDown={handleMouseDown}
@@ -285,16 +287,16 @@ export function ProductInUseGallery({ productId, title = 'See this product in us
             >
               <Image
                 src={`${images[selectedIndex].imageUrl}&width=800`}
-                alt="Product in use"
+                alt='Product in use'
                 fill
-                className="object-cover pointer-events-none"
+                className='object-cover pointer-events-none'
                 onClick={() => openLightbox(selectedIndex)}
               />
             </div>
 
             {/* Mobile dots */}
             {images.length > 1 && (
-              <div className="flex justify-center gap-2 mt-4">
+              <div className='flex justify-center gap-2 mt-4'>
                 {images.map((_, index) => (
                   <button
                     key={index}

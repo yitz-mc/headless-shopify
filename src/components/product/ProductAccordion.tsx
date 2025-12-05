@@ -1,6 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import type { AssemblyInstruction } from '@/types';
+import { routes } from '@/lib/routes';
 
 interface AccordionSection {
   title: string;
@@ -29,11 +31,6 @@ interface VariantSpecs {
   numberOfDrawers?: string;
   totalWeightCapacity?: string;
   hardwareIncluded?: string;
-}
-
-interface AssemblyInstruction {
-  title: string;
-  fileUrl: string;
 }
 
 interface ProductAccordionProps {
@@ -99,9 +96,9 @@ function cleanValue(val?: string): string | null {
 
 function SpecRow({ label, value }: { label: string; value: string }) {
   return (
-    <tr className="border-b border-gray-200">
-      <td className="py-3 pr-4 text-sm font-medium text-gray-900 w-[40%]">{label}</td>
-      <td className="py-3 text-sm text-gray-500">{value}</td>
+    <tr className='border-b border-gray-200'>
+      <td className='py-3 pr-4 text-sm font-medium text-gray-900 w-[40%]'>{label}</td>
+      <td className='py-3 text-sm text-gray-500'>{value}</td>
     </tr>
   );
 }
@@ -123,29 +120,29 @@ function Prop65Modal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void
 
   return (
     <div
-      className="fixed inset-0 bg-black/50 z-[9999] flex justify-center items-center"
+      className='fixed inset-0 bg-black/50 z-[9999] flex justify-center items-center'
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
     >
-      <div className="relative bg-white text-black text-lg p-5 max-w-[80%] md:max-w-[600px] md:p-10">
+      <div className='relative bg-white text-black text-lg p-5 max-w-[80%] md:max-w-[600px] md:p-10'>
         <button
           onClick={onClose}
-          className="absolute top-2.5 right-2.5 text-3xl font-bold text-black cursor-pointer hover:opacity-70"
-          aria-label="Close"
+          className='absolute top-2.5 right-2.5 text-3xl font-bold text-black cursor-pointer hover:opacity-70'
+          aria-label='Close'
         >
           ×
         </button>
-        <div className="prop65-content">
+        <div className='prop65-content'>
           <p>
-            <strong>WARNING:</strong> This product can expose you to chemicals which are known to the
-            State of California to cause cancer, birth defects or other reproductive harm. For more
-            information visit{' '}
+            <strong>WARNING:</strong> This product can expose you to chemicals which are known to
+            the State of California to cause cancer, birth defects or other reproductive harm. For
+            more information visit{' '}
             <a
-              href="https://www.P65Warnings.ca.gov"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#c55849] underline"
+              href='https://www.P65Warnings.ca.gov'
+              target='_blank'
+              rel='noopener noreferrer'
+              className='text-[#c55849] underline'
             >
               www.P65Warnings.ca.gov
             </a>
@@ -159,28 +156,43 @@ function Prop65Modal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void
 function SpecificationsContent({ specs }: { specs: VariantSpecs }) {
   const [showProp65Modal, setShowProp65Modal] = useState(false);
 
-  const section1Items = SECTION1_KEYS
-    .map(({ key, label }) => ({ key, label, value: cleanValue(specs[key]) }))
-    .filter((item): item is { key: keyof VariantSpecs; label: string; value: string } => item.value !== null);
+  const section1Items = SECTION1_KEYS.map(({ key, label }) => ({
+    key,
+    label,
+    value: cleanValue(specs[key]),
+  })).filter(
+    (item): item is { key: keyof VariantSpecs; label: string; value: string } =>
+      item.value !== null,
+  );
 
-  const section2Items = SECTION2_KEYS
-    .map(({ key, label }) => ({ key, label, value: cleanValue(specs[key]) }))
-    .filter((item): item is { key: keyof VariantSpecs; label: string; value: string } => item.value !== null);
+  const section2Items = SECTION2_KEYS.map(({ key, label }) => ({
+    key,
+    label,
+    value: cleanValue(specs[key]),
+  })).filter(
+    (item): item is { key: keyof VariantSpecs; label: string; value: string } =>
+      item.value !== null,
+  );
 
-  const section3Items = SECTION3_KEYS
-    .map(({ key, label }) => ({ key, label, value: cleanValue(specs[key]) }))
-    .filter((item): item is { key: keyof VariantSpecs; label: string; value: string } => item.value !== null);
+  const section3Items = SECTION3_KEYS.map(({ key, label }) => ({
+    key,
+    label,
+    value: cleanValue(specs[key]),
+  })).filter(
+    (item): item is { key: keyof VariantSpecs; label: string; value: string } =>
+      item.value !== null,
+  );
 
   if (section1Items.length === 0 && section2Items.length === 0 && section3Items.length === 0) {
     return null;
   }
 
   return (
-    <div className="specification-table__content">
-      <table className="w-full">
+    <div className='specification-table__content'>
+      <table className='w-full'>
         <tbody>
           {/* Section 1 - Material/Color (no title) */}
-          {section1Items.map(item => (
+          {section1Items.map((item) => (
             <SpecRow key={item.key} label={item.label} value={item.value} />
           ))}
 
@@ -188,9 +200,11 @@ function SpecificationsContent({ specs }: { specs: VariantSpecs }) {
           {section2Items.length > 0 && (
             <>
               <tr>
-                <td colSpan={2} className="pt-6 pb-3 text-base font-semibold">Dimensions</td>
+                <td colSpan={2} className='pt-6 pb-3 text-base font-semibold'>
+                  Dimensions
+                </td>
               </tr>
-              {section2Items.map(item => (
+              {section2Items.map((item) => (
                 <SpecRow key={item.key} label={item.label} value={item.value} />
               ))}
             </>
@@ -200,9 +214,11 @@ function SpecificationsContent({ specs }: { specs: VariantSpecs }) {
           {section3Items.length > 0 && (
             <>
               <tr>
-                <td colSpan={2} className="pt-6 pb-3 text-base font-semibold">Item Details</td>
+                <td colSpan={2} className='pt-6 pb-3 text-base font-semibold'>
+                  Item Details
+                </td>
               </tr>
-              {section3Items.map(item => (
+              {section3Items.map((item) => (
                 <SpecRow key={item.key} label={item.label} value={item.value} />
               ))}
             </>
@@ -211,11 +227,11 @@ function SpecificationsContent({ specs }: { specs: VariantSpecs }) {
       </table>
 
       {/* California Prop 65 Warning */}
-      <div className="text-sm text-gray-500 mt-6">
+      <div className='text-sm text-gray-500 mt-6'>
         California Residents:{' '}
         <button
           onClick={() => setShowProp65Modal(true)}
-          className="underline text-[#c55849] cursor-pointer hover:opacity-80"
+          className='underline text-[#c55849] cursor-pointer hover:opacity-80'
         >
           WARNING
         </button>
@@ -232,23 +248,23 @@ function AccordionItem({
   isHtml = false,
   isOpen,
   onToggle,
-  children
+  children,
 }: AccordionSection & { isOpen: boolean; onToggle: () => void; children?: React.ReactNode }) {
   return (
-    <div className="border-b border-gray-200">
+    <div className='border-b border-gray-200'>
       <button
         onClick={onToggle}
-        className="w-full flex items-center justify-between py-4 text-left"
+        className='w-full flex items-center justify-between py-4 text-left'
         aria-expanded={isOpen}
       >
-        <span className="text-base font-medium uppercase tracking-wide">{title}</span>
+        <span className='text-base font-medium uppercase tracking-wide'>{title}</span>
         <svg
           className={`w-4 h-4 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
+          fill='none'
+          stroke='currentColor'
+          viewBox='0 0 24 24'
         >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+          <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M19 9l-7 7-7-7' />
         </svg>
       </button>
       <div
@@ -256,13 +272,15 @@ function AccordionItem({
           isOpen ? 'max-h-[2000px] pb-4' : 'max-h-0'
         }`}
       >
-        {children ? children : isHtml ? (
+        {children ? (
+          children
+        ) : isHtml ? (
           <div
-            className="prose prose-sm max-w-none text-gray-600"
+            className='prose prose-sm max-w-none text-gray-600'
             dangerouslySetInnerHTML={{ __html: content }}
           />
         ) : (
-          <div className="text-gray-600 text-sm whitespace-pre-wrap">{content}</div>
+          <div className='text-gray-600 text-sm whitespace-pre-wrap'>{content}</div>
         )}
       </div>
     </div>
@@ -272,7 +290,7 @@ function AccordionItem({
 export function ProductAccordion({
   description,
   variantSpecs,
-  assemblyInstructions
+  assemblyInstructions,
 }: ProductAccordionProps) {
   const [openSections, setOpenSections] = useState<Record<string, boolean>>({
     overview: true, // First one open by default
@@ -281,25 +299,27 @@ export function ProductAccordion({
   });
 
   const toggleSection = (key: string) => {
-    setOpenSections(prev => ({
+    setOpenSections((prev) => ({
       ...prev,
       [key]: !prev[key],
     }));
   };
 
   // Check if we have any specs to show
-  const hasSpecs = variantSpecs && Object.values(variantSpecs).some(v => {
-    if (!v) return false;
-    const cleaned = v.replace(/^["']|["']$/g, '').trim();
-    return cleaned !== 'null' && cleaned !== '';
-  });
+  const hasSpecs =
+    variantSpecs &&
+    Object.values(variantSpecs).some((v) => {
+      if (!v) return false;
+      const cleaned = v.replace(/^["']|["']$/g, '').trim();
+      return cleaned !== 'null' && cleaned !== '';
+    });
 
   return (
-    <div className="product-accordion mt-8 border-t border-gray-200">
+    <div className='product-accordion mt-8 border-t border-gray-200'>
       {/* Overview */}
       {description && description.trim() !== '' && (
         <AccordionItem
-          title="Overview"
+          title='Overview'
           content={description}
           isHtml={true}
           isOpen={openSections.overview}
@@ -310,8 +330,8 @@ export function ProductAccordion({
       {/* Specifications */}
       {hasSpecs && variantSpecs && (
         <AccordionItem
-          title="Specifications"
-          content=""
+          title='Specifications'
+          content=''
           isOpen={openSections.specifications}
           onToggle={() => toggleSection('specifications')}
         >
@@ -321,21 +341,21 @@ export function ProductAccordion({
 
       {/* Assembly Instructions */}
       <AccordionItem
-        title="Assembly Instructions"
-        content=""
+        title='Assembly Instructions'
+        content=''
         isOpen={openSections.assembly}
         onToggle={() => toggleSection('assembly')}
       >
-        <div className="assembly-instructions">
+        <div className='assembly-instructions'>
           {assemblyInstructions && assemblyInstructions.length > 0 && (
-            <ul className="list-disc pl-5 mb-4">
+            <ul className='list-disc pl-5 mb-4'>
               {assemblyInstructions.map((instruction, index) => (
-                <li key={index} className="mb-3">
+                <li key={index} className='mb-3'>
                   <a
                     href={instruction.fileUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[#F27662] hover:opacity-80"
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='text-[#F27662] hover:opacity-80'
                   >
                     {instruction.title}
                   </a>
@@ -345,10 +365,10 @@ export function ProductAccordion({
           )}
           <div>
             <a
-              href="/pages/closet-measuring-guide"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#F27662] hover:opacity-80"
+              href={routes.pages.measuringGuide}
+              target='_blank'
+              rel='noopener noreferrer'
+              className='text-[#F27662] hover:opacity-80'
             >
               Closet Measuring Guide
             </a>

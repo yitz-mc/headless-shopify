@@ -106,11 +106,11 @@ export function AddToCart({ variant, product, upsellVariants }: AddToCartProps) 
 
   return (
     <>
-      <div className="product-price-container">
+      <div className='product-price-container'>
         {/* Price */}
-        <div className="product-form__price mb-1">
+        <div className='product-form__price mb-1'>
           {variant && (
-            <span className="product-price--current text-xl font-medium">
+            <span className='product-price--current text-xl font-medium'>
               {formatPrice(variant.price.amount, variant.price.currencyCode)}
             </span>
           )}
@@ -118,57 +118,55 @@ export function AddToCart({ variant, product, upsellVariants }: AddToCartProps) 
 
         {/* Afterpay messaging */}
         {variant && (
-          <AfterpayMessage
-            price={variant.price.amount}
-            currencyCode={variant.price.currencyCode}
-          />
+          <AfterpayMessage price={variant.price.amount} currencyCode={variant.price.currencyCode} />
         )}
 
         {/* Quantity & Add to Cart */}
-        <div className="product-form__controls">
-          <div className="product-form__actions flex gap-2">
+        <div className='product-form__controls'>
+          <div className='product-form__actions flex gap-2'>
             {/* Quantity Selector */}
-            <div className="product-form__quantity flex items-center border border-gray-300 rounded-[10px] overflow-hidden">
+            <div className='product-form__quantity flex items-center border border-gray-300 rounded-[10px] overflow-hidden'>
               <button
                 onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                className="w-10 h-11 flex items-center justify-center text-lg rounded-l-[10px] hover:bg-gray-200 transition-colors"
+                className='w-10 h-11 flex items-center justify-center text-lg rounded-l-[10px] hover:bg-gray-200 transition-colors'
                 disabled={quantity <= 1}
-                type="button"
+                type='button'
               >
                 −
               </button>
               <input
-                type="text"
-                inputMode="numeric"
-                pattern="[0-9]*"
+                type='text'
+                inputMode='numeric'
+                pattern='[0-9]*'
                 value={quantity}
                 onChange={(e) => {
                   const val = parseInt(e.target.value);
                   if (!isNaN(val) && val >= 1) setQuantity(val);
                 }}
-                className="w-10 h-11 text-center focus:outline-none bg-transparent"
-                name="quantity"
+                className='w-10 h-11 text-center focus:outline-none bg-transparent'
+                name='quantity'
               />
               <button
                 onClick={() => setQuantity(quantity + 1)}
-                className="w-10 h-11 flex items-center justify-center text-lg rounded-r-[10px] hover:bg-gray-200 transition-colors"
-                type="button"
+                className='w-10 h-11 flex items-center justify-center text-lg rounded-r-[10px] hover:bg-gray-200 transition-colors'
+                type='button'
               >
                 +
               </button>
             </div>
 
             {/* Add to Cart Button */}
-            <div className="product-form__buttons flex-1">
+            <div className='product-form__buttons flex-1'>
               <button
                 onClick={handleAddToCart}
                 disabled={isDisabled}
-                type="button"
+                type='button'
                 className={`
                   w-full h-11 px-6 font-medium rounded-full flex items-center justify-between
-                  ${isDisabled
-                    ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                    : 'bg-[#c55849] text-white hover:bg-[#b04d40]'
+                  ${
+                    isDisabled
+                      ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                      : 'bg-[#c55849] text-white hover:bg-[#b04d40]'
                   }
                 `}
               >
@@ -181,9 +179,7 @@ export function AddToCart({ variant, product, upsellVariants }: AddToCartProps) 
                         ? 'Sold out'
                         : 'Add to Cart'}
                 </span>
-                {!isDisabled && !isLoading && (
-                  <CornerDownRight className="w-5 h-5" />
-                )}
+                {!isDisabled && !isLoading && <CornerDownRight className='w-5 h-5' />}
               </button>
             </div>
           </div>

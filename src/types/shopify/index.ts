@@ -31,28 +31,13 @@ export type {
 } from './variant';
 
 // Products
-export type {
-  ProductOption,
-  Product,
-  ProductCard,
-  ProductReference,
-} from './product';
+export type { ProductOption, Product, ProductCard, ProductReference } from './product';
 
 // Collections
-export type {
-  Collection,
-  CollectionEdge,
-  CollectionConnection,
-} from './collection';
+export type { Collection, CollectionEdge, CollectionConnection } from './collection';
 
 // Cart
-export type {
-  CartLine,
-  Cart,
-  CartUserError,
-  CartCreatePayload,
-  CartLinesAddPayload,
-} from './cart';
+export type { CartLine, Cart, CartUserError, CartCreatePayload, CartLinesAddPayload } from './cart';
 
 // Menu
 export type { MenuItem, Menu } from './menu';

@@ -1,11 +1,11 @@
-import { Metadata } from "next";
-import { notFound, redirect } from "next/navigation";
-import { getShopifyClient } from "@/lib/shopify";
-import { GET_PRODUCT_BY_HANDLE } from "@/graphql";
-import { ProductDetails, ProductTrustpilot, ProductInUseGallery } from "@/components/product";
-import { WhereToStart } from "@/components/sections";
-import { Breadcrumb } from "@/components/ui";
-import type { Product } from "@/types";
+import { Metadata } from 'next';
+import { notFound, redirect } from 'next/navigation';
+import { getShopifyClient } from '@/lib/shopify';
+import { GET_PRODUCT_BY_HANDLE } from '@/graphql';
+import { ProductDetails, ProductTrustpilot, ProductInUseGallery } from '@/components/product';
+import { WhereToStart } from '@/components/sections';
+import { Breadcrumb } from '@/components/ui';
+import type { Product } from '@/types';
 
 interface ProductPageProps {
   params: Promise<{
@@ -32,8 +32,8 @@ async function getProduct(handle: string): Promise<ProductResult> {
 
     return { product: data.product, error: null };
   } catch (error) {
-    console.error("Error fetching product:", error);
-    return { product: null, error: "Failed to load product" };
+    console.error('Error fetching product:', error);
+    return { product: null, error: 'Failed to load product' };
   }
 }
 
@@ -42,7 +42,7 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
   const { product } = await getProduct(productHandle);
 
   if (!product) {
-    return { title: "Product Not Found" };
+    return { title: 'Product Not Found' };
   }
 
   return {
@@ -67,9 +67,9 @@ export default async function CollectionProductPage({ params, searchParams }: Pr
 
   if (error || !product) {
     return (
-      <div className="container mx-auto px-4 py-16 text-center">
-        <h1 className="text-2xl font-bold mb-4">Product</h1>
-        <p className="text-gray-500">Unable to load product. Please try again later.</p>
+      <div className='container mx-auto px-4 py-16 text-center'>
+        <h1 className='text-2xl font-bold mb-4'>Product</h1>
+        <p className='text-gray-500'>Unable to load product. Please try again later.</p>
       </div>
     );
   }
@@ -79,12 +79,12 @@ export default async function CollectionProductPage({ params, searchParams }: Pr
     .filter((sku): sku is string => Boolean(sku));
 
   return (
-    <div className="product-page py-8">
-      <div className="container mx-auto px-4">
+    <div className='product-page py-8'>
+      <div className='container mx-auto px-4'>
         <Breadcrumb
           items={[
-            { label: "Home", href: "/", showHomeIcon: true },
-            { label: "All Modules", href: `/collections/${collectionHandle}` },
+            { label: 'Home', href: '/', showHomeIcon: true },
+            { label: 'All Modules', href: `/collections/${collectionHandle}` },
             { label: product.title },
           ]}
         />
@@ -99,7 +99,7 @@ export default async function CollectionProductPage({ params, searchParams }: Pr
       />
       <ProductInUseGallery productId={product.id} />
 
-      <WhereToStart />
+      <WhereToStart variant='product' />
     </div>
   );
 }

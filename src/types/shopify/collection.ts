@@ -16,6 +16,10 @@ export interface Collection {
     edges: Array<{
       node: ProductCard;
     }>;
+    pageInfo?: {
+      hasNextPage: boolean;
+      endCursor: string;
+    };
   };
 }
 

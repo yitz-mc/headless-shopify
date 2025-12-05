@@ -1,8 +1,23 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getShopifyClient } from '@/lib/shopify';
+import { getShopifyClient, getLightboxComparison } from '@/lib/shopify';
 import { GET_COLLECTION_WITH_PRODUCTS } from '@/graphql';
 import { ProductGrid } from '@/components/product';
+import {
+  WhereToStart,
+  TrustpilotReviews,
+  VistaHero,
+  InfoCards,
+  AdditionalResources,
+  CollectionHero,
+  AltoHero,
+  SharedPanelAlto,
+  LuxuriousDetailsAlto,
+  BuildClosetAlto,
+  AltoGallery,
+} from '@/components/sections';
+import { getTrustpilotReviews } from '@/lib/shopify/trustpilot';
+import type { Collection } from '@/types';
 
 interface CollectionPageProps {
   params: Promise<{
@@ -10,61 +25,15 @@ interface CollectionPageProps {
   }>;
 }
 
-interface Collection {
-  id: string;
-  title: string;
-  handle: string;
-  description: string;
-  descriptionHtml: string;
-  image: {
-    url: string;
-    altText: string;
-    width: number;
-    height: number;
-  } | null;
-  products: {
-    edges: Array<{
-      node: {
-        id: string;
-        title: string;
-        handle: string;
-        availableForSale: boolean;
-        priceRange: {
-          minVariantPrice: {
-            amount: string;
-            currencyCode: string;
-          };
-        };
-        compareAtPriceRange: {
-          minVariantPrice: {
-            amount: string;
-            currencyCode: string;
-          };
-        };
-        images: {
-          edges: Array<{
-            node: {
-              id: string;
-              url: string;
-              altText: string | null;
-              width: number;
-              height: number;
-            };
-          }>;
-        };
-      };
-    }>;
-    pageInfo: {
-      hasNextPage: boolean;
-      endCursor: string;
-    };
-  };
-}
-
 interface CollectionResult {
   collection: Collection | null;
   error: string | null;
 }
+
+// Collections that use the Vista layout
+const VISTA_LAYOUT_COLLECTIONS = ['vista'];
+// Collections that use the Alto layout
+const ALTO_LAYOUT_COLLECTIONS = ['alto-closet-system'];
 
 async function getCollection(handle: string): Promise<CollectionResult> {
   const client = getShopifyClient();
@@ -72,7 +41,7 @@ async function getCollection(handle: string): Promise<CollectionResult> {
   try {
     const data = await client.request<{ collection: Collection | null }>(
       GET_COLLECTION_WITH_PRODUCTS,
-      { handle, first: 50 }
+      { handle, first: 50 },
     );
 
     // Collection is null = it doesn't exist (404)
@@ -116,7 +85,16 @@ export async function generateMetadata({ params }: CollectionPageProps): Promise
 
 export default async function CollectionPage({ params }: CollectionPageProps) {
   const { handle } = await params;
-  const { collection, error } = await getCollection(handle);
+  const isVistaLayout = VISTA_LAYOUT_COLLECTIONS.includes(handle);
+  const isAltoLayout = ALTO_LAYOUT_COLLECTIONS.includes(handle);
+
+  // Fetch collection and Trustpilot reviews in parallel
+  const [collectionResult, trustpilotData] = await Promise.all([
+    getCollection(handle),
+    getTrustpilotReviews(),
+  ]);
+
+  const { collection, error } = collectionResult;
 
   // Only 404 if the API responded successfully but collection doesn't exist
   if (!error && !collection) {
@@ -126,18 +104,16 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
   // API error - show error state but still render the page structure
   if (error || !collection) {
     return (
-      <div className="collection-page">
-        <header className="collection-header bg-gray-50 py-8">
-          <div className="container mx-auto px-4">
-            <h1 className="text-3xl font-bold text-center">{formatHandle(handle)}</h1>
+      <div className='collection-page'>
+        <header className='collection-header bg-gray-50 py-8'>
+          <div className='container mx-auto px-4'>
+            <h1 className='text-3xl font-bold text-center'>{formatHandle(handle)}</h1>
           </div>
         </header>
 
-        <section className="py-16">
-          <div className="container mx-auto px-4 text-center">
-            <p className="text-gray-500">
-              Unable to load products. Please try again later.
-            </p>
+        <section className='py-16'>
+          <div className='container mx-auto px-4 text-center'>
+            <p className='text-gray-500'>Unable to load products. Please try again later.</p>
           </div>
         </section>
       </div>
@@ -146,26 +122,117 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
 
   const products = collection.products.edges.map((edge) => edge.node);
 
+  // Vista Layout: VistaHero + InfoCards + ProductGrid + WhereToStart + TrustpilotReviews
+  if (isVistaLayout && trustpilotData) {
+    const { heading, reviews } = trustpilotData;
+    return (
+      <div className='collection-page'>
+        {/* Vista Hero Banner */}
+        <VistaHero />
+
+        {/* Info Cards */}
+        <InfoCards />
+
+        {/* Product Grid */}
+        <section className='py-8'>
+          <div className='container mx-auto px-4'>
+            <ProductGrid products={products} collectionHandle={collection.handle} />
+          </div>
+        </section>
+
+        {/* Where To Start */}
+        <WhereToStart variant='product' />
+
+        {/* Trustpilot Reviews */}
+        <TrustpilotReviews
+          heading={heading.heading}
+          ratingName={heading.ratingName}
+          amountOfStars={heading.amountOfStars}
+          amountOfReviews={heading.amountOfReviews}
+          buttonLink={heading.buttonLink}
+          buttonText={heading.buttonText}
+          reviews={reviews}
+        />
+
+        {/* Additional Resources */}
+        <AdditionalResources />
+      </div>
+    );
+  }
+
+  // Alto Layout: AltoHero + InfoCards + ProductGrid + WhereToStart + TrustpilotReviews
+  if (isAltoLayout && trustpilotData) {
+    const { heading, reviews } = trustpilotData;
+    const [lightboxData, altoCollectionResult] = await Promise.all([
+      getLightboxComparison(),
+      getCollection('alto-collection'),
+    ]);
+    const altoCollectionProducts = altoCollectionResult.collection?.products.edges.map((edge) => edge.node) || [];
+
+    return (
+      <div className='collection-page'>
+        {/* Alto Hero Banner */}
+        <AltoHero />
+
+        {/* Info Cards */}
+        <InfoCards variant='alto' />
+
+        {/* Shared Panel Alto */}
+        <SharedPanelAlto comparisonFeatures={lightboxData.features} />
+
+        {/* Luxurious Details */}
+        <LuxuriousDetailsAlto />
+
+        {/* Build Closet Alto - Components Guide */}
+        <BuildClosetAlto products={altoCollectionProducts} />
+
+        {/* Alto Gallery - Real Customer Closets */}
+        <AltoGallery />
+
+        {/* Where To Start */}
+        <WhereToStart variant='chooseCategory' showHeading={false} backgroundColor='#ffffff' />
+
+        {/* Trustpilot Reviews */}
+        <TrustpilotReviews
+          heading={heading.heading}
+          ratingName={heading.ratingName}
+          amountOfStars={heading.amountOfStars}
+          amountOfReviews={heading.amountOfReviews}
+          buttonLink={heading.buttonLink}
+          buttonText={heading.buttonText}
+          reviews={reviews}
+        />
+      </div>
+    );
+  }
+
+  // Default Layout: CollectionHero + ProductGrid + WhereToStart + Trustpilot
+  const { heading, reviews } = trustpilotData;
   return (
-    <div className="collection-page">
-      {/* Collection Header */}
-      <header className="collection-header bg-gray-50 py-8">
-        <div className="container mx-auto px-4">
-          <h1 className="text-3xl font-bold text-center">{collection.title}</h1>
-          {collection.description && (
-            <p className="mt-2 text-center text-gray-600 max-w-2xl mx-auto">
-              {collection.description}
-            </p>
-          )}
-        </div>
-      </header>
+    <div className='collection-page'>
+      {/* Collection Hero (breadcrumb + title) */}
+      <CollectionHero title={collection.title} description={collection.descriptionHtml} />
 
       {/* Product Grid */}
-      <section className="py-8">
-        <div className="container mx-auto px-4">
+      <section className='py-8'>
+        <div className='container mx-auto px-4'>
           <ProductGrid products={products} collectionHandle={collection.handle} />
         </div>
       </section>
+
+      {/* Where To Start */}
+      <WhereToStart variant='chooseCategory' showHeading={false} backgroundColor='#ffffff' />
+
+      {/* Trustpilot Reviews */}
+      <TrustpilotReviews
+        heading={heading.heading}
+        ratingName={heading.ratingName}
+        amountOfStars={heading.amountOfStars}
+        amountOfReviews={heading.amountOfReviews}
+        buttonLink={heading.buttonLink}
+        buttonText={heading.buttonText}
+        reviews={reviews}
+      />
     </div>
   );
 }

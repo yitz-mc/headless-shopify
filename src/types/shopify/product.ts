@@ -50,6 +50,13 @@ export interface ProductCard {
       node: Image;
     }>;
   };
+  variants?: {
+    edges: Array<{
+      node: {
+        id: string;
+      };
+    }>;
+  };
 }
 
 /** Minimal product reference (used in variants) */

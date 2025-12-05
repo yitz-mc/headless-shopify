@@ -1,0 +1,20 @@
+{
+  "backgroundColor": "#f9f9f9",
+  "cards": [
+    {
+      "id": "free-design",
+      "image": "https://sfycdn.speedsize.com/eed8e0c4-8a58-46ce-832b-26984a0a57e6/https://www.modularclosets.com/cdn/shop/files/Group_3909_ad0a1ff7-3ebf-495a-9eb4-64cd58abaec4.svg?v=1714409684",
+      "title": "FREE Design"
+    },
+    {
+      "id": "warranty",
+      "image": "https://sfycdn.speedsize.com/eed8e0c4-8a58-46ce-832b-26984a0a57e6/https://www.modularclosets.com/cdn/shop/files/Group_417.svg?v=1672154269",
+      "title": "Lifetime Warranty"
+    },
+    {
+      "id": "made-in-usa",
+      "image": "https://sfycdn.speedsize.com/eed8e0c4-8a58-46ce-832b-26984a0a57e6/https://www.modularclosets.com/cdn/shop/files/made_in_usa.svg?v=1672154351",
+      "title": "Proud USA Manufacturer"
+    }
+  ]
+}

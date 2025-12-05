@@ -1,0 +1,10 @@
+{
+  "desktopImage": "https://sfycdn.speedsize.com/eed8e0c4-8a58-46ce-832b-26984a0a57e6/https://www.modularclosets.com/cdn/shop/files/bedroom_vista_closet.png?v=1719928877",
+  "mobileImage": "https://sfycdn.speedsize.com/eed8e0c4-8a58-46ce-832b-26984a0a57e6/https://www.modularclosets.com/cdn/shop/files/mobile.jpg?v=1719837604",
+  "title": "VISTA CLOSET SYSTEM",
+  "description": "Premium units that combine for a custom closet. Browse all modules below.",
+  "button1Text": "Free Design Service",
+  "button1Route": "designQuiz",
+  "button2Text": "3D Design Tool",
+  "button2Route": "designTool"
+}

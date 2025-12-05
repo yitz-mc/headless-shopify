@@ -23,7 +23,11 @@ declare global {
   }
 }
 
-export function ProductTrustpilot({ productTitle, productId, variantSkus }: ProductTrustpilotProps) {
+export function ProductTrustpilot({
+  productTitle,
+  productId,
+  variantSkus,
+}: ProductTrustpilotProps) {
   const widgetRef = useRef<HTMLDivElement>(null);
 
   // Build SKU string: all variant SKUs + product ID
@@ -50,29 +54,25 @@ export function ProductTrustpilot({ productTitle, productId, variantSkus }: Prod
   }, [skuString]);
 
   return (
-    <div className="trustpilot-product-reviews">
-      <div className="container mx-auto px-4">
-        <div className="trustpilot-product-reviews__content py-8 md:py-12">
+    <div className='trustpilot-product-reviews'>
+      <div className='container mx-auto px-4'>
+        <div className='trustpilot-product-reviews__content py-8 md:py-12'>
           {/* TrustBox widget - Product Reviews MultiSource SEO */}
           <div
             ref={widgetRef}
-            className="trustpilot-widget"
-            data-locale="en-US"
+            className='trustpilot-widget'
+            data-locale='en-US'
             data-template-id={TRUSTPILOT_CONFIG.templateId}
             data-businessunit-id={TRUSTPILOT_CONFIG.businessUnitId}
-            data-style-height="330px"
-            data-style-width="100%"
-            data-theme="light"
+            data-style-height='330px'
+            data-style-width='100%'
+            data-theme='light'
             data-sku={skuString}
             data-name={productTitle}
-            data-review-languages="en"
-            data-no-reviews="hide"
+            data-review-languages='en'
+            data-no-reviews='hide'
           >
-            <a
-              href={TRUSTPILOT_CONFIG.trustpilotLink}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href={TRUSTPILOT_CONFIG.trustpilotLink} target='_blank' rel='noopener noreferrer'>
               Trustpilot Reviews
             </a>
           </div>

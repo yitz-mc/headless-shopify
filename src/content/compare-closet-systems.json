@@ -1,0 +1,45 @@
+{
+  "headingBackgroundColor": "#4699d3",
+  "headingText": "COMPARE OUR CLOSET SYSTEMS",
+  "headingTextColor": "#ffffff",
+  "column1HeadingText": "Feature",
+  "column1BackgroundColor": "#c0dff5",
+  "column1LineColor": "#0074ae",
+  "column1TextColor": "#2b87c9",
+  "column2HeadingText": "Vista System",
+  "column3HeadingText": "Alto System",
+  "column2And3BackgroundColor": "#f8f5f3",
+  "column2And3LineColor": "#c0dff5",
+  "features": [
+    {
+      "feature": "Panel Style",
+      "vista": "Stackable panels",
+      "alto": "Full-length shared panels"
+    },
+    {
+      "feature": "Look & Feel",
+      "vista": "Modern, modular aesthetic",
+      "alto": "Seamless, custom-built look"
+    },
+    {
+      "feature": "Installation",
+      "vista": "DIY-friendly, stackable design",
+      "alto": "DIY-friendly, easiest yet"
+    },
+    {
+      "feature": "Customization",
+      "vista": "Multiple configurations",
+      "alto": "50+ premium customizations"
+    },
+    {
+      "feature": "Hardware",
+      "vista": "Quality hardware included",
+      "alto": "Premium soft-close hardware"
+    },
+    {
+      "feature": "Price Point",
+      "vista": "Budget-friendly option",
+      "alto": "Premium investment"
+    }
+  ]
+}

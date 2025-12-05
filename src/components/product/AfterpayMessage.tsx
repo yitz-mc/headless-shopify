@@ -56,12 +56,12 @@ export function AfterpayMessage({ price, currencyCode }: AfterpayMessageProps) {
   }, [priceInCents, currencyCode]);
 
   return (
-    <div className="afterpay-message mb-4">
+    <div className='afterpay-message mb-4'>
       {/* Load Afterpay script using Next.js Script component */}
       <Script
-        id="afterpay-shopify-sdk"
-        src="https://static.afterpay.com/shopify-afterpay-javascript.js"
-        strategy="lazyOnload"
+        id='afterpay-shopify-sdk'
+        src='https://static.afterpay.com/shopify-afterpay-javascript.js'
+        strategy='lazyOnload'
         onReady={() => {
           // Re-apply config when script is ready
           setupAfterpayConfig(priceInCents, currencyCode);
@@ -69,8 +69,8 @@ export function AfterpayMessage({ price, currencyCode }: AfterpayMessageProps) {
       />
 
       {/* Container where Afterpay injects its messaging */}
-      <div ref={containerRef} className="afterpay-price-container">
-        <span className="money" style={{ display: 'none' }}>
+      <div ref={containerRef} className='afterpay-price-container'>
+        <span className='money' style={{ display: 'none' }}>
           ${price}
         </span>
       </div>

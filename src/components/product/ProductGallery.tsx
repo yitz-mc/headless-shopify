@@ -76,25 +76,25 @@ export function ProductGallery({ images, productTitle }: ProductGalleryProps) {
 
   if (images.length === 0) {
     return (
-      <div className="aspect-square bg-gray-100 flex items-center justify-center">
-        <span className="text-gray-400">No image available</span>
+      <div className='aspect-square bg-gray-100 flex items-center justify-center'>
+        <span className='text-gray-400'>No image available</span>
       </div>
     );
   }
 
   return (
-    <div className="product-media max-w-[750px] ml-auto" id="product-gallery">
+    <div className='product-media max-w-[750px] ml-auto' id='product-gallery'>
       {/* Hidden links for PhotoSwipe */}
-      <div className="hidden">
+      <div className='hidden'>
         {images.map((image, index) => (
           <a
             key={image.id}
             href={image.url}
             data-pswp-width={image.width || 1200}
             data-pswp-height={image.height || 1200}
-            className="pswp-item"
-            target="_blank"
-            rel="noreferrer"
+            className='pswp-item'
+            target='_blank'
+            rel='noreferrer'
           >
             {image.altText || `${productTitle} ${index + 1}`}
           </a>
@@ -102,7 +102,7 @@ export function ProductGallery({ images, productTitle }: ProductGalleryProps) {
       </div>
 
       {/* Main Image Swiper */}
-      <div className="product-media__images mb-4">
+      <div className='product-media__images mb-4'>
         <Swiper
           spaceBetween={0}
           slidesPerView={1}
@@ -112,20 +112,20 @@ export function ProductGallery({ images, productTitle }: ProductGalleryProps) {
           onSlideChange={(swiper) => {
             setActiveIndex(swiper.activeIndex);
           }}
-          className="aspect-square bg-white rounded-lg"
+          className='aspect-square bg-white rounded-lg'
         >
           {images.map((image, index) => (
             <SwiperSlide key={image.id}>
               <div
-                className="relative w-full h-full cursor-pointer"
+                className='relative w-full h-full cursor-pointer'
                 onClick={() => openLightbox(index)}
               >
                 <Image
                   src={image.url}
                   alt={image.altText || productTitle}
                   fill
-                  sizes="(max-width: 768px) 100vw, 600px"
-                  className="object-contain"
+                  sizes='(max-width: 768px) 100vw, 600px'
+                  className='object-contain'
                   priority={index === 0}
                   draggable={false}
                 />
@@ -136,7 +136,7 @@ export function ProductGallery({ images, productTitle }: ProductGalleryProps) {
 
         {/* Custom Pagination Dots - Mobile only */}
         {images.length > 1 && (
-          <div className="flex justify-center gap-2 mt-4 md:hidden">
+          <div className='flex justify-center gap-2 mt-4 md:hidden'>
             {images.map((_, index) => (
               <button
                 key={index}
@@ -153,27 +153,27 @@ export function ProductGallery({ images, productTitle }: ProductGalleryProps) {
 
       {/* Thumbnails - Hidden on mobile */}
       {images.length > 1 && (
-        <div className="product-media__thumbnails hidden md:block">
+        <div className='product-media__thumbnails hidden md:block'>
           <Swiper
             spaceBetween={12}
-            slidesPerView="auto"
+            slidesPerView='auto'
             watchSlidesProgress
-            className="thumbnails-swiper"
+            className='thumbnails-swiper'
           >
             {images.map((image, index) => (
               <SwiperSlide key={image.id} style={{ width: 'auto' }}>
                 <button
                   onClick={() => handleThumbnailClick(index)}
-                  className="block"
+                  className='block'
                   aria-label={`Show image ${index + 1}`}
                 >
-                  <div className="relative w-[100px] h-[100px] md:w-[110px] md:h-[110px] rounded-lg border border-gray-300 hover:border-gray-400 overflow-hidden transition-all">
+                  <div className='relative w-[100px] h-[100px] md:w-[110px] md:h-[110px] rounded-lg border border-gray-300 hover:border-gray-400 overflow-hidden transition-all'>
                     <Image
                       src={image.url}
                       alt={image.altText || `${productTitle} thumbnail ${index + 1}`}
                       fill
-                      sizes="110px"
-                      className="object-contain"
+                      sizes='110px'
+                      className='object-contain'
                     />
                   </div>
                 </button>

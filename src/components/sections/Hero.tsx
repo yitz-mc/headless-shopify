@@ -26,31 +26,29 @@ export function Hero() {
 
   return (
     <section
-      className="flex flex-col-reverse md:flex-row"
+      className='flex flex-col-reverse md:flex-row'
       style={{ backgroundColor: heroContent.backgroundColor }}
     >
       {/* Image - 60% on desktop, full width on mobile */}
-      <div className="w-full md:w-[60%]">
+      <div className='w-full md:w-[60%]'>
         <Image
           src={heroContent.image}
-          alt="Custom closet"
+          alt='Custom closet'
           width={1200}
           height={800}
-          className="w-full h-auto"
+          className='w-full h-auto'
           priority
         />
       </div>
 
       {/* Text Content - 40% on desktop */}
       <div
-        className="w-full md:w-[40%] flex items-center justify-center py-8 md:py-0 px-4 md:px-8"
+        className='w-full md:w-[40%] flex items-center justify-center py-8 md:py-0 px-4 md:px-8'
         style={{ color: heroContent.textColor }}
       >
-        <div className="flex flex-col items-center text-center gap-2">
+        <div className='flex flex-col items-center text-center gap-2'>
           {/* Heading Info (optional) */}
-          {heroContent.headingInfo && (
-            <p className="text-sm">{heroContent.headingInfo}</p>
-          )}
+          {heroContent.headingInfo && <p className='text-sm'>{heroContent.headingInfo}</p>}
 
           {/* Main Heading - CYBER MONDAY */}
           <h2
@@ -70,12 +68,10 @@ export function Hero() {
           </h2>
 
           {/* Subheading - "The custom closet..." */}
-          <p className="text-base md:text-xl max-w-[230px]">
-            {heroContent.subheading}
-          </p>
+          <p className='text-base md:text-xl max-w-[230px]'>{heroContent.subheading}</p>
 
           {/* Sale Text - 20% OFF */}
-          <p className="text-6xl md:text-7xl lg:text-[100px] font-bold leading-none uppercase">
+          <p className='text-6xl md:text-7xl lg:text-[100px] font-bold leading-none uppercase'>
             {heroContent.saleText}
           </p>
 
@@ -83,11 +79,11 @@ export function Hero() {
           {heroContent.code && (
             <button
               onClick={handleCopyCode}
-              className="relative text-sm opacity-70 hover:opacity-100 cursor-pointer transition-opacity mb-4"
+              className='relative text-sm opacity-70 hover:opacity-100 cursor-pointer transition-opacity mb-4'
             >
               {heroContent.code.text}
               {copied && (
-                <span className="absolute -top-7 left-1/2 -translate-x-1/2 bg-white text-black text-xs px-2 py-1 rounded whitespace-nowrap">
+                <span className='absolute -top-7 left-1/2 -translate-x-1/2 bg-white text-black text-xs px-2 py-1 rounded whitespace-nowrap'>
                   Code copied!
                 </span>
               )}
@@ -95,16 +91,16 @@ export function Hero() {
           )}
 
           {/* Buttons - Stacked */}
-          <div className="flex flex-col gap-2.5 w-[200px]">
+          <div className='flex flex-col gap-2.5 w-[200px]'>
             <Link
               href={primaryHref}
-              className="bg-[#E8927C] hover:bg-[#C95B48] text-white px-6 py-2 rounded-full text-center border border-[#E8927C] hover:border-[#C95B48] transition-colors"
+              className='bg-[#E8927C] hover:bg-[#C95B48] text-white px-6 py-2 rounded-full text-center border border-[#E8927C] hover:border-[#C95B48] transition-colors'
             >
               {heroContent.buttons.primary.text}
             </Link>
             <Link
               href={secondaryHref}
-              className="hidden md:block bg-white text-[#E8927C] hover:text-[#C95B48] px-6 py-2 rounded-full text-center border border-[#E8927C] hover:border-[#C95B48] transition-colors"
+              className='hidden md:block bg-white text-[#E8927C] hover:text-[#C95B48] px-6 py-2 rounded-full text-center border border-[#E8927C] hover:border-[#C95B48] transition-colors'
             >
               {heroContent.buttons.secondary.text}
             </Link>

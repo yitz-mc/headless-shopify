@@ -1,0 +1,31 @@
+{
+  "backgroundColor": "#f7f4f2",
+  "heading": "ADDITIONAL RESOURCES",
+  "headingColor": "#2773aa",
+  "items": [
+    {
+      "id": "faqs",
+      "image": "https://www.modularclosets.com/cdn/shop/files/FAQs_b344c5ce-659c-4229-af19-5171489431b5.png",
+      "title": "FAQs",
+      "route": "pages.faqs"
+    },
+    {
+      "id": "why-modular",
+      "image": "https://www.modularclosets.com/cdn/shop/files/Why_Modular_c6818d38-4d1d-42eb-b409-51a8465f5fab.png",
+      "title": "Why Modular",
+      "route": "pages.about"
+    },
+    {
+      "id": "free-design",
+      "image": "https://www.modularclosets.com/cdn/shop/files/Free_Expert_Design_38873506-4e9d-4487-a4c2-e6692cc55b11.png",
+      "title": "Free Expert Design",
+      "url": "/pages/closet-design-quiz?utm_referlclick=vistaplp_additional_cta"
+    },
+    {
+      "id": "gallery",
+      "image": "https://www.modularclosets.com/cdn/shop/files/Our_Gallery_1175fe1f-8d15-4fba-a811-3adb254af419.png",
+      "title": "Our Gallery",
+      "route": "pages.gallery"
+    }
+  ]
+}

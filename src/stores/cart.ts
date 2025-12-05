@@ -44,15 +44,11 @@ export const useCartStore = create<CartState>()(
 
       addItem: (item) =>
         set((state) => {
-          const existingItem = state.items.find(
-            (i) => i.variantId === item.variantId
-          );
+          const existingItem = state.items.find((i) => i.variantId === item.variantId);
           if (existingItem) {
             return {
               items: state.items.map((i) =>
-                i.variantId === item.variantId
-                  ? { ...i, quantity: i.quantity + item.quantity }
-                  : i
+                i.variantId === item.variantId ? { ...i, quantity: i.quantity + item.quantity } : i,
               ),
             };
           }
@@ -66,9 +62,7 @@ export const useCartStore = create<CartState>()(
 
       updateQuantity: (variantId, quantity) =>
         set((state) => ({
-          items: state.items.map((i) =>
-            i.variantId === variantId ? { ...i, quantity } : i
-          ),
+          items: state.items.map((i) => (i.variantId === variantId ? { ...i, quantity } : i)),
         })),
 
       clearCart: () => set({ items: [], cartId: null }),
@@ -78,12 +72,11 @@ export const useCartStore = create<CartState>()(
       toggleCart: () => set((state) => ({ isOpen: !state.isOpen })),
 
       totalItems: () => get().items.reduce((sum, item) => sum + item.quantity, 0),
-      totalPrice: () =>
-        get().items.reduce((sum, item) => sum + item.price * item.quantity, 0),
+      totalPrice: () => get().items.reduce((sum, item) => sum + item.price * item.quantity, 0),
     }),
     {
       name: 'cart-storage',
       partialize: (state) => ({ items: state.items, cartId: state.cartId }),
-    }
-  )
+    },
+  ),
 );

@@ -139,13 +139,19 @@ export const PRODUCT_FRAGMENT = gql`
           numberOfFixedShelves: metafield(namespace: "my_fields", key: "number_of_fixed_shelves") {
             value
           }
-          numberOfAdjustableShelves: metafield(namespace: "my_fields", key: "number_of_adjustable_shelves") {
+          numberOfAdjustableShelves: metafield(
+            namespace: "my_fields"
+            key: "number_of_adjustable_shelves"
+          ) {
             value
           }
           numberOfDrawers: metafield(namespace: "my_fields", key: "number_of_drawers") {
             value
           }
-          totalWeightCapacity: metafield(namespace: "my_fields", key: "total_weight_capacity_lbs_") {
+          totalWeightCapacity: metafield(
+            namespace: "my_fields"
+            key: "total_weight_capacity_lbs_"
+          ) {
             value
           }
           hardwareIncluded: metafield(namespace: "my_fields", key: "hardware_included") {
@@ -217,6 +223,13 @@ export const PRODUCT_CARD_FRAGMENT = gql`
           altText
           width
           height
+        }
+      }
+    }
+    variants(first: 1) {
+      edges {
+        node {
+          id
         }
       }
     }

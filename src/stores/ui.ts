@@ -24,8 +24,7 @@ export const useUIStore = create<UIState>((set) => ({
   isMobileMenuOpen: false,
   openMobileMenu: () => set({ isMobileMenuOpen: true }),
   closeMobileMenu: () => set({ isMobileMenuOpen: false }),
-  toggleMobileMenu: () =>
-    set((state) => ({ isMobileMenuOpen: !state.isMobileMenuOpen })),
+  toggleMobileMenu: () => set((state) => ({ isMobileMenuOpen: !state.isMobileMenuOpen })),
 
   // Search
   isSearchOpen: false,

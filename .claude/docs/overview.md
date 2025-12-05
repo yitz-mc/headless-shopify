@@ -3,6 +3,7 @@
 Headless Next.js storefront for **Modular Closets** - a rebuild of the Shopify Liquid theme.
 
 ## Reference Codebase
+
 - Live site theme: `c:\Users\MrNeuman\Workspace\modular-closets-github`
 - Check `snippets/`, `sections/`, `assets/` for implementation reference
 - **Always check the codebase first** before scraping the live site - scraping is last resort

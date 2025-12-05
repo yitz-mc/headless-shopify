@@ -10,3 +10,4 @@ export { CartUpsellModal } from './CartUpsellModal';
 export { AfterpayMessage } from './AfterpayMessage';
 export { ProductTrustpilot } from './ProductTrustpilot';
 export { ProductInUseGallery } from './ProductInUseGallery';
+export { AltoProductCard } from './AltoProductCard';

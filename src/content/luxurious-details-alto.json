@@ -1,0 +1,41 @@
+{
+  "backgroundColor": "#F2F1F0",
+  "title": "Luxurious details for a luxurious life.",
+  "description": "Having a closet with thoughtful design and impeccable organization makes mornings calmer and evenings relaxing. <strong>That's why we thought of all the gorgeous little details.</strong>",
+  "button1Text": "",
+  "button1Url": "",
+  "button2Text": "",
+  "button2Url": "",
+  "cards": [
+    {
+      "id": 1,
+      "image": "https://sfycdn.speedsize.com/eed8e0c4-8a58-46ce-832b-26984a0a57e6/https://www.modularclosets.com/cdn/shop/files/pull_black_oak.png",
+      "title": "Premium Hardware"
+    },
+    {
+      "id": 2,
+      "image": "https://sfycdn.speedsize.com/eed8e0c4-8a58-46ce-832b-26984a0a57e6/https://www.modularclosets.com/cdn/shop/files/shoe_fence_gold_gray.png",
+      "title": "Shoe Fences"
+    },
+    {
+      "id": 3,
+      "image": "https://sfycdn.speedsize.com/eed8e0c4-8a58-46ce-832b-26984a0a57e6/https://www.modularclosets.com/cdn/shop/files/drawer_undermount_white.png",
+      "title": "Undermount"
+    },
+    {
+      "id": 4,
+      "image": "https://sfycdn.speedsize.com/eed8e0c4-8a58-46ce-832b-26984a0a57e6/https://www.modularclosets.com/cdn/shop/files/knob_gold.png",
+      "title": "Decorative Knobs"
+    },
+    {
+      "id": 5,
+      "image": "https://sfycdn.speedsize.com/eed8e0c4-8a58-46ce-832b-26984a0a57e6/https://www.modularclosets.com/cdn/shop/files/drawer_soft_close_white.png",
+      "title": "Soft-Close Slides"
+    },
+    {
+      "id": 6,
+      "image": "https://sfycdn.speedsize.com/eed8e0c4-8a58-46ce-832b-26984a0a57e6/https://www.modularclosets.com/cdn/shop/files/jewelry_tray_white.png",
+      "title": "Jewelry Trays"
+    }
+  ]
+}

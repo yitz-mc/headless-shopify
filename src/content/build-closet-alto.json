@@ -1,0 +1,59 @@
+{
+  "bannerBackgroundColor": "#0074ae",
+  "bannerTitle": "Alto Components Quick Guide",
+  "bannerDescription": "Hover on a circle to learn about each component.",
+  "bannerImage": "https://sfycdn.speedsize.com/eed8e0c4-8a58-46ce-832b-26984a0a57e6/https://www.modularclosets.com/cdn/shop/files/Side_Panels_2.png",
+  "linkText": "Shop Alto Builders Vault",
+  "linkRoute": "collections.altoCollection",
+  "hotspots": [
+    {
+      "id": 1,
+      "top": 25,
+      "left": 26,
+      "title": "Side Panels",
+      "description": "The finishing touch that caps off your closet system, giving it a polished and complete appearance."
+    },
+    {
+      "id": 2,
+      "top": 40,
+      "left": 38,
+      "title": "Center Panels",
+      "description": "These panels connect multiple sections seamlessly, maximizing space and creating a clean, uniform look."
+    },
+    {
+      "id": 3,
+      "top": 60,
+      "left": 67,
+      "title": "Drawers",
+      "description": "Sleek, soft-closing drawers available in two heights to organize and conceal your items neatly."
+    },
+    {
+      "id": 4,
+      "top": 58,
+      "left": 56,
+      "title": "Cubbies",
+      "description": "Versatile open compartments ideal for shoes, accessories, or decorative items."
+    },
+    {
+      "id": 5,
+      "top": 72,
+      "left": 45,
+      "title": "Shoe Shelves",
+      "description": "Specialized shelves with a front lip to securely display and organize footwear of all kinds. Available in straight & slanted."
+    },
+    {
+      "id": 6,
+      "top": 30,
+      "left": 70,
+      "title": "Shelves",
+      "description": "Adjustable and sturdy flat surfaces for flexible storage of folded clothing, boxes, or decor."
+    },
+    {
+      "id": 7,
+      "top": 10,
+      "left": 45,
+      "title": "Hanging Rods",
+      "description": "Durable rods that efficiently hold your hanging clothes, from shirts to long garments."
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "homepage": {
+    "heading": "OUR CLOSET SYSTEMS",
+    "description": "",
+    "compareButton": {
+      "text": "Compare Closet Systems",
+      "route": "chooseCategory"
+    },
+    "cards": [
+      {
+        "id": "vista",
+        "backgroundColor": "#efece8",
+        "title": "Vista",
+        "sticker": "https://sfycdn.speedsize.com/eed8e0c4-8a58-46ce-832b-26984a0a57e6/https://www.modularclosets.com/cdn/shop/files/Heading_2.png",
+        "route": "collections.vista",
+        "buttonText": "Start Here",
+        "image": "https://sfycdn.speedsize.com/eed8e0c4-8a58-46ce-832b-26984a0a57e6/https://www.modularclosets.com/cdn/shop/files/Vista_Image_efa473e8-4e35-4ca2-a5b0-2d9e5b9915b2.png",
+        "imageMobile": "https://sfycdn.speedsize.com/eed8e0c4-8a58-46ce-832b-26984a0a57e6/https://www.modularclosets.com/cdn/shop/files/Vista_Image_efa473e8-4e35-4ca2-a5b0-2d9e5b9915b2.png",
+        "listHeading": "",
+        "listItems": ["Most Affordable", "Individual Modules", "Easy to install"],
+        "listIcon": "https://sfycdn.speedsize.com/eed8e0c4-8a58-46ce-832b-26984a0a57e6/https://www.modularclosets.com/cdn/shop/files/list_icon_1e4929d6-2513-4726-9338-ad4be4c5f336.svg"
+      },
+      {
+        "id": "alto",
+        "backgroundColor": "#efece8",
+        "title": "Alto",
+        "sticker": "https://sfycdn.speedsize.com/eed8e0c4-8a58-46ce-832b-26984a0a57e6/https://www.modularclosets.com/cdn/shop/files/new_sticker.svg",
+        "route": "collections.alto",
+        "buttonText": "Start Here",
+        "image": "https://sfycdn.speedsize.com/eed8e0c4-8a58-46ce-832b-26984a0a57e6/https://www.modularclosets.com/cdn/shop/files/Alto_Image_8c2b5395-5f63-499a-8330-a3b8af789a43.png",
+        "imageMobile": "https://sfycdn.speedsize.com/eed8e0c4-8a58-46ce-832b-26984a0a57e6/https://www.modularclosets.com/cdn/shop/files/Alto_Image_8c2b5395-5f63-499a-8330-a3b8af789a43.png",
+        "listHeading": "",
+        "listItems": ["Full Length Units", "Shared Panels", "High-end Customizations"],
+        "listIcon": "https://sfycdn.speedsize.com/eed8e0c4-8a58-46ce-832b-26984a0a57e6/https://www.modularclosets.com/cdn/shop/files/list_icon_1e4929d6-2513-4726-9338-ad4be4c5f336.svg"
+      }
+    ]
+  },
+  "chooseCategory": {
+    "heading": "CHOOSE YOUR CLOSET SYSTEMS",
+    "description": "Both of our closet systems offer stunning, custom-looking closets with a lifetime warranty — at a great price!",
+    "cards": [
+      {
+        "id": "vista",
+        "backgroundColor": "#f2f1f0",
+        "title": "Vista",
+        "sticker": "https://sfycdn.speedsize.com/eed8e0c4-8a58-46ce-832b-26984a0a57e6/https://www.modularclosets.com/cdn/shop/files/Heading_2.png",
+        "route": "collections.vista",
+        "buttonText": "Shop now",
+        "image": "https://sfycdn.speedsize.com/eed8e0c4-8a58-46ce-832b-26984a0a57e6/https://www.modularclosets.com/cdn/shop/files/Vista_Image_efa473e8-4e35-4ca2-a5b0-2d9e5b9915b2.png",
+        "imageMobile": "https://sfycdn.speedsize.com/eed8e0c4-8a58-46ce-832b-26984a0a57e6/https://www.modularclosets.com/cdn/shop/files/Vista_Image_efa473e8-4e35-4ca2-a5b0-2d9e5b9915b2.png",
+        "listHeading": "Modules start at $200",
+        "listItems": ["Classic Floating System", "Individual Modules", "Easy to Install"],
+        "listIcon": "https://sfycdn.speedsize.com/eed8e0c4-8a58-46ce-832b-26984a0a57e6/https://www.modularclosets.com/cdn/shop/files/list_icon_1e4929d6-2513-4726-9338-ad4be4c5f336.svg"
+      },
+      {
+        "id": "alto",
+        "backgroundColor": "#f2f1f0",
+        "title": "Alto",
+        "sticker": "https://sfycdn.speedsize.com/eed8e0c4-8a58-46ce-832b-26984a0a57e6/https://www.modularclosets.com/cdn/shop/files/new_sticker.svg",
+        "route": "collections.alto",
+        "buttonText": "Shop now",
+        "image": "https://sfycdn.speedsize.com/eed8e0c4-8a58-46ce-832b-26984a0a57e6/https://www.modularclosets.com/cdn/shop/files/Alto_Image_8c2b5395-5f63-499a-8330-a3b8af789a43.png",
+        "imageMobile": "https://sfycdn.speedsize.com/eed8e0c4-8a58-46ce-832b-26984a0a57e6/https://www.modularclosets.com/cdn/shop/files/Alto_Image_8c2b5395-5f63-499a-8330-a3b8af789a43.png",
+        "listHeading": "Modules start at $250",
+        "listItems": ["Premium Full Length Units", "Shared Panel System", "Easy to Install"],
+        "listIcon": "https://sfycdn.speedsize.com/eed8e0c4-8a58-46ce-832b-26984a0a57e6/https://www.modularclosets.com/cdn/shop/files/list_icon_1e4929d6-2513-4726-9338-ad4be4c5f336.svg"
+      }
+    ]
+  },
+  "otherSpaces": {
+    "heading": "Other Spaces",
+    "headingSize": 66,
+    "description": "",
+    "cards": [
+      {
+        "id": "wardrobe",
+        "backgroundColor": "#efece8",
+        "title": "Wardrobe",
+        "sticker": "",
+        "route": "collections.wardrobes",
+        "buttonText": "Start Here",
+        "image": "https://sfycdn.speedsize.com/eed8e0c4-8a58-46ce-832b-26984a0a57e6/https://www.modularclosets.com/cdn/shop/files/Milano_b02069e4-7452-414d-9a88-114d408140fd.png",
+        "imageMobile": "https://sfycdn.speedsize.com/eed8e0c4-8a58-46ce-832b-26984a0a57e6/https://www.modularclosets.com/cdn/shop/files/Milano_b02069e4-7452-414d-9a88-114d408140fd.png",
+        "listHeading": "",
+        "listItems": [],
+        "listIcon": ""
+      },
+      {
+        "id": "mudroom",
+        "backgroundColor": "#efece8",
+        "title": "Mudroom",
+        "sticker": "",
+        "route": "products.mudroomWithBench",
+        "buttonText": "Start Here",
+        "image": "https://sfycdn.speedsize.com/eed8e0c4-8a58-46ce-832b-26984a0a57e6/https://www.modularclosets.com/cdn/shop/files/mudroom.png",
+        "imageMobile": "https://sfycdn.speedsize.com/eed8e0c4-8a58-46ce-832b-26984a0a57e6/https://www.modularclosets.com/cdn/shop/files/mudroom.png",
+        "listHeading": "",
+        "listItems": [],
+        "listIcon": ""
+      },
+      {
+        "id": "garage",
+        "backgroundColor": "#efece8",
+        "title": "Garage",
+        "sticker": "",
+        "route": "pages.garages",
+        "buttonText": "Start Here",
+        "image": "https://sfycdn.speedsize.com/eed8e0c4-8a58-46ce-832b-26984a0a57e6/https://www.modularclosets.com/cdn/shop/files/outdoorgarage_9feda6ec-829f-4433-aab4-3ad2fdbd295c.png",
+        "imageMobile": "https://sfycdn.speedsize.com/eed8e0c4-8a58-46ce-832b-26984a0a57e6/https://www.modularclosets.com/cdn/shop/files/outdoorgarage_9feda6ec-829f-4433-aab4-3ad2fdbd295c.png",
+        "listHeading": "",
+        "listItems": [],
+        "listIcon": ""
+      }
+    ]
+  }
+}

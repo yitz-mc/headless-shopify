@@ -5,10 +5,7 @@
 /**
  * Format a price amount with currency
  */
-export function formatPrice(
-  amount: string | number,
-  currencyCode: string = 'USD'
-): string {
+export function formatPrice(amount: string | number, currencyCode: string = 'USD'): string {
   const numericAmount = typeof amount === 'string' ? parseFloat(amount) : amount;
 
   return new Intl.NumberFormat('en-US', {
@@ -28,7 +25,7 @@ export function formatDate(
     year: 'numeric',
     month: 'long',
     day: 'numeric',
-  }
+  },
 ): string {
   const dateObj = typeof date === 'string' ? new Date(date) : date;
   return new Intl.DateTimeFormat('en-US', options).format(dateObj);

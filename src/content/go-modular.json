@@ -1,0 +1,36 @@
+{
+  "heading": "Because we're quality-obsessed.",
+  "headingMobile": "Because we're quality-obsessed.",
+  "videoUrl": "https://sfycdn.speedsize.com/eed8e0c4-8a58-46ce-832b-26984a0a57e6/www.modularclosets.com/cdn/shop/videos/c/vp/ba022dafeece44fea552f2df3e5fc231/ba022dafeece44fea552f2df3e5fc231.HD-1080p-2.5Mbps-33981397.mp4?v=0",
+  "cards": [
+    {
+      "id": "warranty",
+      "title": "Lifetime Warranty"
+    },
+    {
+      "id": "diy",
+      "title": "Easy DIY Installation"
+    },
+    {
+      "id": "usa",
+      "title": "Made in the USA"
+    }
+  ],
+  "colors": [
+    {
+      "id": "cool-white",
+      "name": "Cool White",
+      "image": "https://sfycdn.speedsize.com/eed8e0c4-8a58-46ce-832b-26984a0a57e6/https://www.modularclosets.com/cdn/shop/files/Rectangle_3205.png"
+    },
+    {
+      "id": "grey",
+      "name": "Grey",
+      "image": "https://sfycdn.speedsize.com/eed8e0c4-8a58-46ce-832b-26984a0a57e6/https://www.modularclosets.com/cdn/shop/files/Mask_Group_575_db64f0f2-97a4-4eef-a34b-19abbec2f0ee.png"
+    },
+    {
+      "id": "natural-oak",
+      "name": "Natural Oak",
+      "image": "https://sfycdn.speedsize.com/eed8e0c4-8a58-46ce-832b-26984a0a57e6/https://www.modularclosets.com/cdn/shop/files/Mask_Group_576.png"
+    }
+  ]
+}

@@ -17,10 +17,15 @@ export const routes = {
   // Category pages
   chooseCategory: '/pages/choose-category',
 
+  products: {
+    mudroomWithBench: '/products/mudroom-with-bench',
+  },
+
   // Collections
   collections: {
     vista: '/collections/vista',
     alto: '/collections/alto-closet-system',
+    altoCollection: '/collections/alto-collection',
     milanoInternal: '/collections/milano-internal',
     preDesignedClosets: '/collections/pre-designed-closets',
     accessories: '/collections/accessories',
@@ -44,6 +49,11 @@ export const routes = {
     safetyGuidelines: '/pages/safety-and-assembly-guidelines',
     contactUs: '/pages/contact-us',
     privacyPolicy: '/pages/privacy-policy',
+    measuringGuide: '/pages/closet-measuring-guide',
+    pro: '/pages/pro',
+    about: '/pages/about',
+    closetDesign: '/pages/closet-design',
+    closetDesignB: '/pages/closet-design-b',
   },
 
   // Policies

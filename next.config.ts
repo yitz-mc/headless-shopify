@@ -1,10 +1,8 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   // Allow VS Code dev tunnels
-  allowedDevOrigins: [
-    'https://62nwrbgs-3000.use2.devtunnels.ms',
-  ],
+  allowedDevOrigins: ['https://62nwrbgs-3000.use2.devtunnels.ms'],
   images: {
     remotePatterns: [
       {

@@ -1,0 +1,30 @@
+{
+  "backgroundColor": "#f2f1f0",
+  "title": "Our Most Custom Closet Yet.",
+  "image": "https://sfycdn.speedsize.com/eed8e0c4-8a58-46ce-832b-26984a0a57e6/https://www.modularclosets.com/cdn/shop/files/view_03_white_1.png?v=1728489699",
+  "icon": "https://sfycdn.speedsize.com/eed8e0c4-8a58-46ce-832b-26984a0a57e6/https://www.modularclosets.com/cdn/shop/files/list_icon_1e4929d6-2513-4726-9338-ad4be4c5f336.svg?v=1728490077",
+  "mobileIcon": "https://sfycdn.speedsize.com/eed8e0c4-8a58-46ce-832b-26984a0a57e6/https://www.modularclosets.com/cdn/shop/files/mobile_icon_1f868c61-2cfc-4079-8d23-dd06c6348517.svg?v=1728490199",
+  "cards": [
+    {
+      "id": "shared-panels",
+      "title": "Full Length, Shared Panel Units",
+      "description": "For a seamless look that's as close to custom as you'll get — minus the price!"
+    },
+    {
+      "id": "customizations",
+      "title": "Premium Customizations",
+      "description": "Explore 50+ customizations, soft-close drawers and high-end hardware"
+    },
+    {
+      "id": "diy-friendly",
+      "title": "DIY-Friendly Assembly",
+      "description": "The Alto system is our easiest system yet to install — no expertise required!"
+    }
+  ],
+  "button1Text": "Design Your Closet",
+  "button1Route": "pages.closetDesign",
+  "button1TextMobile": "Free Design Service",
+  "button1RouteMobile": "designQuiz",
+  "button2Text": "Compare to Vista",
+  "button2Route": "chooseCategory"
+}

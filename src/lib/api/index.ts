@@ -1,0 +1,1 @@
+export { fetchPredictiveSearch } from './search';
