@@ -1,0 +1,28 @@
+{
+  "backgroundColor": "#f2f1f0",
+  "heading": "THE MODULAR ADVANTAGE",
+  "subheading": "Why choose Modular Closets?",
+  "cardTitleColor": "#2773aa",
+  "buttonText": "Explore our Products",
+  "buttonRoute": "collections.vista",
+  "cards": [
+    {
+      "id": "durability",
+      "image": "https://cdn.shopify.com/s/files/1/0857/4644/files/long_lasting.png",
+      "title": "Incredible durability",
+      "description": "Lab tested for strength and backed by our forever warranty!"
+    },
+    {
+      "id": "delivery",
+      "image": "https://cdn.shopify.com/s/files/1/0857/4644/files/warehousej.png",
+      "title": "Speedy delivery times",
+      "description": "Made in the US and ships out in 5 business days."
+    },
+    {
+      "id": "diy",
+      "image": "https://cdn.shopify.com/s/files/1/0857/4644/files/easy_diy.png",
+      "title": "Easy DIY installation",
+      "description": "Save big by installing yourself."
+    }
+  ]
+}

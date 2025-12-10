@@ -50,7 +50,7 @@ export const routes = {
     contactUs: '/pages/contact-us',
     privacyPolicy: '/pages/privacy-policy',
     measuringGuide: '/pages/closet-measuring-guide',
-    pro: '/pages/pro',
+    pro: '/pages/pros',
     about: '/pages/about',
     closetDesign: '/pages/closet-design',
     closetDesignB: '/pages/closet-design-b',

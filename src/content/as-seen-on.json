@@ -1,0 +1,31 @@
+{
+  "backgroundColor": "#f2f1f0",
+  "heading": "As seen on:",
+  "logos": [
+    {
+      "id": "hgtv",
+      "image": "https://cdn.shopify.com/s/files/1/0857/4644/files/HGTV_6b135400-dc87-44c7-89d0-1a8f17b6b5f9.png",
+      "alt": "HGTV"
+    },
+    {
+      "id": "apartment-therapy",
+      "image": "https://cdn.shopify.com/s/files/1/0857/4644/files/apartment_therapy_2a38cda2-324a-4dfe-90c2-1af8622271d5.png",
+      "alt": "Apartment Therapy"
+    },
+    {
+      "id": "martha-stewart",
+      "image": "https://cdn.shopify.com/s/files/1/0857/4644/files/martha-stewart-logo.png",
+      "alt": "Martha Stewart"
+    },
+    {
+      "id": "good-housekeeping",
+      "image": "https://cdn.shopify.com/s/files/1/0857/4644/files/good_housekeeping.png",
+      "alt": "Good Housekeeping"
+    },
+    {
+      "id": "better-homes",
+      "image": "https://cdn.shopify.com/s/files/1/0857/4644/files/better-homes-and-gardens-vector-logo.png",
+      "alt": "Better Homes and Gardens"
+    }
+  ]
+}

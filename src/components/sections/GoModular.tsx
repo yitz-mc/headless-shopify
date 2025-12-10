@@ -1,7 +1,27 @@
 'use client';
 
 import Image from 'next/image';
-import content from '@/content/go-modular.json';
+import defaultContent from '@/content/go-modular.json';
+
+interface GoModularCard {
+  id: string;
+  title: string;
+}
+
+interface GoModularColor {
+  id: string;
+  name: string;
+  image: string;
+}
+
+interface GoModularProps {
+  heading?: string;
+  headingMobile?: string;
+  videoUrl?: string;
+  cards?: GoModularCard[];
+  colors?: GoModularColor[];
+  showColors?: boolean;
+}
 
 function CheckIcon() {
   return (
@@ -18,15 +38,22 @@ function CheckIcon() {
   );
 }
 
-export function GoModular() {
+export function GoModular({
+  heading = defaultContent.heading,
+  headingMobile = defaultContent.headingMobile,
+  videoUrl = defaultContent.videoUrl,
+  cards = defaultContent.cards,
+  colors = defaultContent.colors,
+  showColors = true,
+}: GoModularProps) {
   return (
     <section className='go-modular bg-white md:py-[50px]'>
       <div className='go-modular-wrapper container mx-auto px-4 py-16 md:py-0 bg-[#F7F5F3] md:bg-transparent'>
         {/* Heading */}
         <div className='text-center mb-6 md:mb-12'>
           <p className='text-[26px] leading-[28px] md:text-5xl md:leading-[48px] font-normal text-[#ed7363] m-0'>
-            <span className='hidden md:inline'>{content.heading}</span>
-            <span className='md:hidden'>{content.headingMobile}</span>
+            <span className='hidden md:inline'>{heading}</span>
+            <span className='md:hidden'>{headingMobile}</span>
           </p>
         </div>
 
@@ -36,7 +63,7 @@ export function GoModular() {
           <div className='flex flex-col justify-around md:items-center'>
             {/* Cards */}
             <div className='grid grid-cols-2 md:flex md:flex-col gap-2 md:gap-0 w-full'>
-              {content.cards.map((card) => (
+              {cards.map((card) => (
                 <div
                   key={card.id}
                   className='flex items-center md:items-start gap-2 md:gap-4 bg-white md:bg-transparent rounded-2xl p-2 md:p-4 md:m-4'
@@ -53,32 +80,34 @@ export function GoModular() {
               ))}
             </div>
 
-            {/* Color Options */}
-            <div className='flex flex-col gap-2 bg-white rounded-3xl p-4 md:p-6 max-w-[350px] mx-auto mt-4'>
-              <div className='text-center'>
-                <span className='text-xs md:text-sm'>Available in 3 classic colors</span>
+            {/* Color Options - conditionally shown */}
+            {showColors && (
+              <div className='flex flex-col gap-2 bg-white rounded-3xl p-4 md:p-6 max-w-[350px] mx-auto mt-4'>
+                <div className='text-center'>
+                  <span className='text-xs md:text-sm'>Available in 3 classic colors</span>
+                </div>
+                <div className='flex gap-4 justify-center'>
+                  {colors.map((color) => (
+                    <div key={color.id} className='text-center'>
+                      <Image
+                        src={color.image}
+                        alt={color.name}
+                        width={84}
+                        height={40}
+                        className='h-8 md:h-10 w-auto object-contain'
+                      />
+                      <div className='text-[10px] mt-1'>{color.name}</div>
+                    </div>
+                  ))}
+                </div>
               </div>
-              <div className='flex gap-4 justify-center'>
-                {content.colors.map((color) => (
-                  <div key={color.id} className='text-center'>
-                    <Image
-                      src={color.image}
-                      alt={color.name}
-                      width={84}
-                      height={40}
-                      className='h-8 md:h-10 w-auto object-contain'
-                    />
-                    <div className='text-[10px] mt-1'>{color.name}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
+            )}
           </div>
 
           {/* Right Column - Video */}
           <div className='w-full md:w-[60%] mx-auto'>
             <video
-              src={content.videoUrl}
+              src={videoUrl}
               autoPlay
               loop
               muted

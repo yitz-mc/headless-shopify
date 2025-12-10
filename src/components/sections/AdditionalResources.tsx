@@ -3,6 +3,16 @@ import Link from 'next/link';
 import data from '@/content/additional-resources.json';
 import { resolveRoute } from '@/lib/routes';
 
+function getItemHref(item: (typeof data.items)[number]): string {
+  if ('route' in item && item.route) {
+    return resolveRoute(item.route);
+  }
+  if ('url' in item && item.url) {
+    return item.url;
+  }
+  return '/';
+}
+
 export function AdditionalResources() {
   return (
     <div className='w-full' style={{ backgroundColor: data.backgroundColor }}>
@@ -22,7 +32,7 @@ export function AdditionalResources() {
           {data.items.map((item) => (
             <Link
               key={item.id}
-              href={'route' in item ? resolveRoute(item.route) : item.url}
+              href={getItemHref(item)}
               className='relative bg-white/50 border border-black/50 rounded-[15px] overflow-hidden aspect-square flex items-center justify-center hover:shadow-lg transition-shadow'
             >
               <div className='flex flex-col items-center justify-center p-4 md:p-[72px]'>

@@ -1,0 +1,43 @@
+{
+  "heading": "wholesale closets for pros",
+  "subheading": "Closets your customers will love, with prices and service that will blow you away.",
+  "backgroundColor": "#f2f1f0",
+  "trustpilot": {
+    "show": true,
+    "text": "Rated \"Excellent\"  |  3,674 Reviews",
+    "starsImage": "https://cdn.shopify.com/s/files/1/0857/4644/files/5_stars.svg"
+  },
+  "cards": [
+    {
+      "id": "speedy",
+      "icon": "https://cdn.shopify.com/s/files/1/0857/4644/files/speedy_turnaround.svg",
+      "text": "Speedy Turnaround"
+    },
+    {
+      "id": "rep",
+      "icon": "https://cdn.shopify.com/s/files/1/0857/4644/files/customer_service.svg",
+      "text": "Dedicated Account Rep"
+    },
+    {
+      "id": "design",
+      "icon": "https://cdn.shopify.com/s/files/1/0857/4644/files/custom_design_sized.png",
+      "text": "FREE Custom Designs"
+    },
+    {
+      "id": "install",
+      "icon": "https://cdn.shopify.com/s/files/1/0857/4644/files/easy_install_sized.png",
+      "text": "Easy to Install"
+    },
+    {
+      "id": "warranty",
+      "icon": "https://cdn.shopify.com/s/files/1/0857/4644/files/lifetime_warranty_sized.png",
+      "text": "Lifetime Warranty"
+    },
+    {
+      "id": "pricing",
+      "icon": "https://cdn.shopify.com/s/files/1/0857/4644/files/budget_friendly_sized.png",
+      "text": "Wholesale Pricing"
+    }
+  ],
+  "image": "https://cdn.shopify.com/s/files/1/0857/4644/files/P22136_-_DG_-_Oak_Rooms_Walk_in_Room_3_Draft_ee23c616-ed16-4993-90a0-18505ab64457.jpg"
+}

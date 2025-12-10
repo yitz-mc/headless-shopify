@@ -1,0 +1,15 @@
+{
+  "heading": "JOIN MODULAR PRO",
+  "subheading": "We make semi-custom closets and home storage for people who want high-quality like-custom solutions at a fraction of the price. (40% cheaper, to be exact.)",
+  "description": "You + Modular Pro: It's a smart, seamless partnership. Every closet module is ready to assemble, so all your team has to do is plan, install – and double your clients' closet space.",
+  "cardTextColor": "#2773aa",
+  "cards": [
+    "Get your closet designed by an expert",
+    "Enjoy partner-level, first-name-basis support",
+    "Quality you can vouch for"
+  ],
+  "buttonText": "Let's Talk",
+  "buttonAnchor": "#pro-form-container",
+  "belowButtonText": "We'll be in touch within 24 business hours",
+  "image": "https://cdn.shopify.com/s/files/1/0857/4644/files/design_help.png"
+}
